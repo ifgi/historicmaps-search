@@ -1,0 +1,13 @@
+
+
+SELECT ?map ?title ?scale ?wkt 
+WHERE
+{
+	?map a maps:Map .
+	?map maps:digitalImageVersion ?picture .
+	?map maps:title ?title .
+	?map maps:hasScale ?scale .
+	?map maps:mapsArea ?area .
+	?area geo-1-0:asWKT ?wkt .
+}
+LIMIT 10

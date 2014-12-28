@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="http://jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
+<link rel="stylesheet" id="themeCSS" href="jQRangeSlider/css/classic.css">
+
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="jQRangeSlider/demo/style.css">
+<script src="jQRangeSlider/lib/jquery.mousewheel.min.js"></script>
+<script src="jQRangeSlider/jQDateRangeSlider-min.js"></script>
+<script src="jQRangeSlider/jQRangeSlider-min.js"></script>
+
+
+<script>
+
+$(function() {
+	
+	$( "#slider" ).rangeSlider({
+	bounds: {min: 1900, max: 2010},
+	defaultValues: {min: 2002, max: 2008}
+});	
+		
+//	$( "#slider2" ).dateRangeSlider({
+//	bounds: {min: new Date(2000,0,1).valueOf(), max: new Date(2011,0,1).valueOf()},
+//	defaultValues: {min: new Date(2006,11,11).valueOf(), max: new Date(2009,1,11).valueOf()}
+//});
+
+
+});
+
+
+function addTime(){
+//	stuff = $( "#slider2" ).dateRangeSlider( "values" );	
+//	alert(stuff.min.getFullYear()+"-"+stuff.min.getUTCMonth()+"-"+stuff.min.getDate()+"T00:00:00Z");
+//	alert(stuff.max.getFullYear()+"-"+stuff.max.getUTCMonth()+"-"+stuff.max.getDate()+"T00:00:00Z");
+
+
+	stuff2 = $( "#slider" ).rangeSlider("values");
+
+	alert(Math.trunc(stuff2.min));
+
+
+}
+
+</script>
+
+</head>
+<body>
+<h1>Spatio-temporal content explorer (SPEX)</h1>
+<button id="sparql" onclick="show()">show</button><br>
+<button id="sparqladd" onclick="add()">add</button><br>
+<button id="addspace" onclick="addSpace()">addspace</button><br>
+<button id="addTime" onclick="addTime()">addTime</button><br>
+<textarea id="query" name="query" rows="30" cols="120"></textarea>
+<br/>Time Filter Pane<br/>
+<div id="slider"></div>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+
+
+$("#slider").bind("valuesChanged", function(e, data){
+    console.log("Values just changed. min: " + data.values.min + " max: " + data.values.max);
+});
+
+
+function setSliderRange(valMin,valMax,ValRangeMin,ValRangeMax) {
+
+
+	$("#slider").rangeSlider({
+		bounds: {min: ValRangeMin, max: ValRangeMax},
+		defaultValues: {min: valMin, max: valMax}
+	});
+
+
+	
+}
+
+
+
+
