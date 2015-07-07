@@ -25,6 +25,7 @@ function getResultSetSize(){
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
 			  .select(["(COUNT(distinct ?map) as ?QT_MAPS)"])
+			  .graph("?graph")
 			  	.where("?map","a","maps:Map")
 			  	.where("?map","maps:digitalImageVersion","?picture")
 			  	.where("?map","maps:title","?title")			  	
@@ -32,7 +33,8 @@ function getResultSetSize(){
 			  	.where("?map","maps:mapsArea","?area")
 			  	.where("?map","maps:mapsTime","?time")
 			  	.where("?time","xsd:gYear","?year")
-			  	.where("?area","geo:asWKT","?wkt");
+			  	.where("?area","geo:asWKT","?wkt")
+			  .end();
 
 	for(var i = 0; i<  arrayCheckboxes.length; i++) {
 		
@@ -69,14 +71,16 @@ function setTemporalLimit(){
 			  .prefix("geo","http://www.opengis.net/ont/geosparql/1.0#")
 			  .prefix("xsd","http://www.w3.org/2001/XMLSchema#")
 			  .select(["(min(?year) as ?mindate)","(max(?year) as ?maxdate)"])
-			  	.where("?map","a","maps:Map")
-			  	.where("?map","maps:digitalImageVersion","?picture")
-			  	.where("?map","maps:title","?title")
-			  	.where("?map","maps:hasScale","?scale")
-			  	.where("?map","maps:mapsArea","?area")
-			  	.where("?map","maps:mapsTime","?time")
-			  	.where("?time","xsd:gYear","?year")
-			  	.where("?area","geo:asWKT","?wkt")
+				  .graph("?graph")
+				  	.where("?map","a","maps:Map")
+				  	.where("?map","maps:digitalImageVersion","?picture")
+				  	.where("?map","maps:title","?title")
+				  	.where("?map","maps:hasScale","?scale")
+				  	.where("?map","maps:mapsArea","?area")
+				  	.where("?map","maps:mapsTime","?time")
+				  	.where("?time","xsd:gYear","?year")
+				  	.where("?area","geo:asWKT","?wkt")
+				  .end()
 			  .orderby("?year").distinct();
 
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallbackTemporalConstraint, false);
@@ -104,16 +108,19 @@ function executeQuery(offset) {
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
 			  .select(["?map", "?title", "?scale", "?wkt", "?picture", "?year", "?description"])
-			  	.where("?map","a","maps:Map")
-			  	.where("?map","maps:digitalImageVersion","?picture")
-			  	.where("?map","maps:title","?title")			  	
-			  	.where("?map","maps:hasScale","?scale")
-			  	.where("?map","maps:mapsArea","?area")
-			  	.where("?map","maps:mapsTime","?time")
-			  	.where("?time","xsd:gYear","?year")
-			  	.where("?area","geo:asWKT","?wkt")
-				.optional().where("?map","dct:description","?description").end()
-			  .orderby("?year").distinct()
+			  	.graph("?graph")
+				  	.where("?map","a","maps:Map")
+				  	.where("?map","maps:digitalImageVersion","?picture")
+				  	.where("?map","maps:title","?title")			  	
+				  	.where("?map","maps:hasScale","?scale")
+				  	.where("?map","maps:mapsArea","?area")
+				  	.where("?map","maps:mapsTime","?time")
+				  	.where("?time","xsd:gYear","?year")
+				  	.where("?area","geo:asWKT","?wkt")
+					.optional().where("?map","dct:description","?description").end()					
+			  	.end()
+			  		.orderby("?year").distinct()
+
 			  .limit(queryLimit)
 			  .offset(queryOffset);
 

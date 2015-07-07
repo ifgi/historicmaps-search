@@ -56,11 +56,11 @@ function plotGeometry(wkt) {
 
 function setSpatiatConstraint(){
 	
-	//Disabling Set Spatial Constraint Button
+	//** Disabling Set Spatial Constraint Button
 	$('#btnSpatialConstraint').prop('disabled', true);
 	$('#btnRemoveSpatialConstraint').prop('disabled', false);
 
-	//Creates a rectangle based on the current BBOX
+	//** Creates a rectangle based on the current BBOX
 	var bounds = [[LMap.getBounds().getNorth(), LMap.getBounds().getEast()], [LMap.getBounds().getSouth(), LMap.getBounds().getWest()]];
 	tmpBBOX = L.rectangle(bounds, {color: "#ff7800", weight: 1});
 
@@ -73,13 +73,16 @@ function setSpatiatConstraint(){
 
 function removeSpatiatConstraint(){
 	
-	//Enabling Set Spatial Constraint Button
+	//** Enabling Set Spatial Constraint Button
 	$('#btnSpatialConstraint').prop('disabled', false);
 	$('#btnRemoveSpatialConstraint').prop('disabled', true);
 
 	//** Removing spatial constraint.
 	LMap.removeLayer(tmpBBOX);
 	wktBBOX="";
+	
+	//** Removing spatial constraint from the result panel.
+	executeQuery(0);
 }
 
 
