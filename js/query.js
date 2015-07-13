@@ -28,7 +28,8 @@ function getResultSetSize(){
 			  .graph("?graph")
 			  	.where("?map","a","maps:Map")
 			  	.where("?map","maps:digitalImageVersion","?picture")
-			  	.where("?map","maps:title","?title")			  	
+			  	.where("?map","maps:title","?title")			  
+			  	.where("?map","maps:presentation","?presentation")		
 			  	.where("?map","maps:hasScale","?scale")
 			  	.where("?map","maps:mapsArea","?area")
 			  	.where("?map","maps:mapsTime","?time")
@@ -75,6 +76,7 @@ function setTemporalLimit(){
 				  	.where("?map","a","maps:Map")
 				  	.where("?map","maps:digitalImageVersion","?picture")
 				  	.where("?map","maps:title","?title")
+				  	.where("?map","maps:presentation","?presentation")	
 				  	.where("?map","maps:hasScale","?scale")
 				  	.where("?map","maps:mapsArea","?area")
 				  	.where("?map","maps:mapsTime","?time")
@@ -107,11 +109,12 @@ function executeQuery(offset) {
 			  .prefix("dct","http://purl.org/dc/terms/")
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
-			  .select(["?map", "?title", "?scale", "?wkt", "?picture", "?year", "?description"])
+			  .select(["?map", "?title", "?scale", "?wkt", "?picture", "?year", "?description", "?presentation"])
 			  	.graph("?graph")
 				  	.where("?map","a","maps:Map")
 				  	.where("?map","maps:digitalImageVersion","?picture")
-				  	.where("?map","maps:title","?title")			  	
+				  	.where("?map","maps:title","?title")
+				  	.where("?map","maps:presentation","?presentation")			  	
 				  	.where("?map","maps:hasScale","?scale")
 				  	.where("?map","maps:mapsArea","?area")
 				  	.where("?map","maps:mapsTime","?time")
@@ -230,6 +233,7 @@ function myCallback(str) {
 			var mapVar = '';
 			var scale = '';
 			var year = '';
+			var presentation = '';
 
 			if (typeof jsonObj.results.bindings[i].description !== 'undefined') {
 				description = jsonObj.results.bindings[i].description.value;
@@ -239,8 +243,8 @@ function myCallback(str) {
 				title = jsonObj.results.bindings[i].title.value;
 			}
 
-			if (typeof jsonObj.results.bindings[i].picture !== 'undefined') {
-				picture = jsonObj.results.bindings[i].picture.value;
+			if (typeof jsonObj.results.bindings[i].presentation !== 'undefined') {
+				presentation = jsonObj.results.bindings[i].presentation.value;
 			}
 
 			if (typeof jsonObj.results.bindings[i].picture !== 'undefined') {
@@ -261,7 +265,7 @@ function myCallback(str) {
 
 
 			$("#result ul").append('<li onmousemove=plotGeometry("'+escape(wkt)+'");><a href=' + picture +'><img src="' +
-			picture + '" alt="'+ title +'" width="87" height="87"></a><p><a href=' + mapVar +'>' + title + '</a><br>' + 
+			picture + '" alt="'+ title +'" width="87" height="87"></a><p><a href=' + presentation +'>' + title + '</a><br>' + 
 			scale + '<br>' + year + '</p></br></br>'+ description +'</li>');
 
 	}
