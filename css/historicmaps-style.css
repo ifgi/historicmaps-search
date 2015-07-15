@@ -2,7 +2,7 @@
 
 body {
 	line-height: 1;
-	overflow: hidden;
+	overflow: hidden; 	
 }
 
 div#main {
@@ -18,65 +18,131 @@ div#header {
     
 
 }
-div#logox {
-    width: 20%;
-    float: left;
- }
+	div#logox {
+	    width: 27%;
+	    float: left;
+	    
+	 }
 
-#logox img{
+		#logox img{
 
-	display: block;
-    margin-left: auto;
-    margin-right: auto; 
-    max-width:100%;
-	max-height:100%;
-}
+			display: block;
+		    margin-left: auto;
+		    margin-right: auto; 
+		    max-width:100%;
+			max-height:100%;
+		}
 
-div#search {
-    width:80%;
-    float: left;
+	div#search {
+	    width:48%;
+	    float: left;
+	    
 
-}
+	}
+		#search input{
+				position: relative;	
+				display: inline;
+		}
+		#search input[type="text"]{			
+			top:25px;
+		
+				
+			width: 80%;		
+		}
+		#search input[type="button"]{			
+			top:20px;
+			
+			
+					
+		}
 
-	div#slider {
-		clear:both;
-		width: 30%;
-		float: left;
-		text-align:center;
-		padding:15px;
+
+		div#slider {
+			clear:both;
+			width: 80%;
+			float: left;
+			text-align:center;
+			padding:15px;
+			position: relative;
+			top: 40px;
+			
+			
+		}
+
+	div#logoy {
+	    width:25%;
+	    float: left;
+	    padding: 0px 0px 0px 0px;
 	}
 
-
-div#display {
+div#toolbar {
     width: 100%;    
-    height: 90%;
+    height: 20px;
     top: 100px;
     float: left;
+    left: 0;
     position: absolute;
+    
     
 }
 
-	div#properties {
-	    width: 15%;  
-	    float: left;	
-	    overflow-y: scroll;    
+	div#mapheader {
+	    width: 75%;    
+	    float: left;
+	    
 	}
+
+	div#status {
+	    width: 25%;    
+	    height: 100%;
+	    float: left;
+	    text-align:center;
+	}
+
+div#display {
+    width: 100%;    
+    top: 119px;
+    bottom: 0;
+    left: 0;
+    float: left;
+    position: absolute;
+  
+}
+
+	div#properties {
+	    width: 12%;  
+	    padding: 7px ;
+	    float: left;		    
+	    overflow-y: auto;
+	    height: 100%;
+	    top: 107px;
+	    
+	    line-height: 0;
+
+	}
+
+		#properties button {
+		    
+		    margin-left: 0;
+		    position:relative;
+ 
+		}
 
 	div#map {
 		width: 75%;
 		float: left;
 		margin: 0 auto;	
-		bottom: 0;
-		position: relativ;
 		min-height: 100%;
-		border:1px solid black;
+		border: 1px solid #B3B2B2;
 	}
 
 	div#result {
 	    width:25%;
-	    
+	 
 	    float: left;
- 
+	    height: 100%;
+	    overflow-y: auto;
+ 		border: 1px solid #B3B2B2;
 	}
 
 	#result li:hover {
@@ -86,8 +152,9 @@ div#display {
 	  background: linear-gradient(#eeeeee, #cecece); /* Standard syntax */
 	}
 	#result img {
-	float: left;
-	margin-right: 10px;
+		float: left;
+		margin-right: 10px;
+		border: 1px solid #B3B2B2;
 	}
 	#result li:after {
 		content: " ";
@@ -96,19 +163,23 @@ div#display {
 	}
 	#result li {
 		font-size: 12px;
-		
+		padding: 10px 10px 10px 10px;
 		border-bottom: 1px solid #fefefe;
 		line-height: 1.4em;
 		cursor: pointer;
-
-
 	}
 
-	div#status{
-
-		text-align:center;
-
+	#result ul {
+		font-size: 12px;
+		padding: 0px 0px 0px 0px;
+		
 	}
+
+
+
+
+
+
 
 
 

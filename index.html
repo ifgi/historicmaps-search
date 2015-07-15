@@ -40,9 +40,15 @@
 <!--
 <link rel="stylesheet" href="css/historicmaps.css" />
 <link href="css/styles.css" rel="stylesheet">
+<link href="css/skins/line/aero.css" rel="stylesheet">
+<script src="js/icheck.js"></script>
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Fira+Sans">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css">
+
+
 
 -->
-
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link href="css/historicmaps-style.css" rel="stylesheet">
 
@@ -96,24 +102,37 @@
 	<div id ="main">
 		
 		<div id="header">			
-			<div id="logox"><img height="90" width="342" src="http://www.ulb.uni-muenster.de/imperia/md/images/allgemein/farbunabhaengig/wwu.svg" alt="ulb_logo"><br></div>
+			<div id="logox"><img height="85" width="342" src="http://www.ulb.uni-muenster.de/imperia/md/images/allgemein/farbunabhaengig/wwu.svg" alt="ulb_logo"><br></div>
 			
 			<div id="search">
-
-				<input type="text" size="80"id="searchField" class="form-control" placeholder="What are you looking for?">
-				<input id="searchButton" class="btn btn-default dropdown-toggle" type="button" name="btnSearch" value="Search"  onclick="executeQuery(0)">
-				<br>				
-				<div id="slider"></div>	
+        
+        
+          <input type="text" size="50 "id="searchField" class="form-control" placeholder="What are you looking for?">
+  				<input id="searchButton" class="btn btn-default dropdown-toggle" type="button" name="btnSearch" value="Search"  onclick="executeQuery(0)">
+          <br>
+							
+				  <div id="slider"></div>	
 
 			</div>
-	
+	    
+      <div id="logoy">.</div>
+
 		</div>
 
-		<div id="display">
+
+    
+    <div id="toolbar">
+        <div id="mapheader">.</div>
+        <div id="status"><span id="status"></span></div>
+        
+    </div>
+    
+		
+    <div id="display">
 				
 			<div id="properties">
 
-				<b><br></b><button id="btnProperties" onclick="executeQuery(0)" class="btn btn-default dropdown-toggle">Set Properties</button><br>
+				<b><br></b><button id="btnProperties" onclick="executeQuery(0)" class="btn btn-default dropdown-toggle">Set Properties</button><br><br><br>
 
 			</div>
 			<div id="map">
@@ -129,8 +148,9 @@
 
 
 
+
 			<div id="listContainer" >
-				<div id="status"></div><p><span id="status"></span></p></div>
+				
 				<div id="result" ></div>
 				<div id="next"></div>
 			</div>	
@@ -169,7 +189,7 @@ $('#showProperties').on('click', function(){
     	$("#showProperties").addClass('').removeClass('active');
     	$("#showProperties").attr('value', 'hide');
     	$('#properties').css("display", "block");	
-    	$('#map').css("width", "60%");	
+    	$('#map').css("width", "63%");	
 		$("#showProperties").html('Hide Properties');
 
 
@@ -206,6 +226,8 @@ $('#selectArea').on('click', function(){
 });
 
 
+
+
 $( document ).ready(function() {
 
 
@@ -220,7 +242,7 @@ $( document ).ready(function() {
 
 		for(var i = 0; i < rdfClasses.length; i++){
 			if(rdfClasses[i].children.length == 0){
-				$("#properties").append("<p id='pOntologyContentTag" + counter +"'><input type='checkbox' id='" + rdfClasses[i].name + "' value='" + rdfClasses[i].uri + "' class='chOntologyContent' >" + rdfClasses[i].name );				
+				$("#properties").append("<p id='pOntologyContentTag" + counter +"'><input type='checkbox' id='" + rdfClasses[i].name + "' value='" + rdfClasses[i].uri + "'><label for 'pOntologyContentTag"+counter+"'>" + rdfClasses[i].name + '</label>' );				
 				counter++;
 			}
 		}
@@ -228,8 +250,12 @@ $( document ).ready(function() {
 
 	//Creating list for query results.
 	$("#result").append('<ul id="itemsContainer" style="list-style-type:none"></ul>');
-	$('#properties').css("display", "none");	
 	
+  $('#properties').css("display", "none");	
+	
+
+
+
 });
 
 $("body").on("change", ".chOntologyContent", function() {
@@ -242,6 +268,17 @@ $("body").on("change", ".chOntologyContent", function() {
 	});
 	
 	arrayCheckboxes=res;
+
+
+
+  $('#btn-search').on('click', function(e) {
+
+    e.preventDefault();
+    $('#search').animate({width: 'toggle'}).focus();
+
+  });
+
+
 
 });
 
