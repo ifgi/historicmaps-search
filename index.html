@@ -37,49 +37,173 @@
 <script src="js/Window.js"></script>
 <script src="js/FilterResults.js"></script>
 
+<!--
 <link rel="stylesheet" href="css/historicmaps.css" />
+<link href="css/styles.css" rel="stylesheet">
 
+-->
+
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link href="css/historicmaps-style.css" rel="stylesheet">
+
+<style>
+
+.menu-ui {
+  background:#fff;
+  position:absolute;
+  top:10px;right:10px;
+  z-index:1;
+  border-radius:3px;
+  width:120px;
+  border:1px solid rgba(0,0,0,0.4);
+  }
+  .menu-ui a {
+    font-size:13px;
+    color:#404040;
+    display:block;
+    margin:0;padding:0;
+    padding:5px 10px;
+    text-decoration:none;
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    text-align:center;
+    }
+    .menu-ui a:first-child {
+      border-radius:3px 3px 0 0;
+      }
+    .menu-ui a:last-child {
+      border:none;
+      border-radius:0 0 3px 3px;
+      }
+    .menu-ui a:hover {
+      background:#f8f8f8;
+      color:#404040;
+      }
+    .menu-ui a.active {
+      background:#3887BE;
+      color:#FFF;
+      }
+      .menu-ui a.active:hover {
+        background:#3074a4;
+        }
+</style>
+
+<html>
+<head>
+	<title>Historic Maps Search</title>	
 </head>
-
 <body onLoad="javascript:init();">
 
-	<div id="header">
-		<h1>Historic Maps Search (Prototype) </h1>
-	</div>
+	<div id ="main">
+		
+		<div id="header">			
+			<div id="logox"><img height="90" width="342" src="http://www.ulb.uni-muenster.de/imperia/md/images/allgemein/farbunabhaengig/wwu.svg" alt="ulb_logo"><br></div>
+			
+			<div id="search">
 
-	<div id="textsearch">
+				<input type="text" size="80"id="searchField" class="form-control" placeholder="What are you looking for?">
+				<input id="searchButton" class="btn btn-default dropdown-toggle" type="button" name="btnSearch" value="Search"  onclick="executeQuery(0)">
+				<br>				
+				<div id="slider"></div>	
+
+			</div>
 	
-	<input id="searchField" name="txtSearch" type="text" size="30" >
-	<input id="searchButton" type="button" name="btnSearch" value="Search"  onclick="executeQuery(0)">
+		</div>
 
+		<div id="display">
+				
+			<div id="properties">
+
+				<b><br></b><button id="btnProperties" onclick="executeQuery(0)" class="btn btn-default dropdown-toggle">Set Properties</button><br>
+
+			</div>
+			<div id="map">
+
+				<nav class='menu-ui'>
+				  <a href='#' id='showProperties' value="show" class='active'>Show Properties</a>
+				  <a href='#' id='selectArea' value="set" class='active' >Select Area</a>
+				  <a href='#' id='automaticZoom' value="on" class='active' >Automatic Zoom</a>
+				</nav>
+
+			</div>
+
+
+
+
+			<div id="listContainer" >
+				<div id="status"></div><p><span id="status"></span></p></div>
+				<div id="result" ></div>
+				<div id="next"></div>
+			</div>	
+
+
+		</div>
 	</div>
 
-<div id="slider"></div>	
-
-<div id="container">
-
-	<div id="nav">
-		<b>RDF Properties</b><button id="btnProperties" onclick="executeQuery(0)">Set Properties</button><br>
-	</div>
-
-	<button id="btnSpatialConstraint" onclick="setSpatiatConstraint()">Set Spatial Constraint</button>
-	<button id="btnRemoveSpatialConstraint" onclick="removeSpatiatConstraint()" disabled>Remove Spatial Constraint</button>
-	<label for="chkZoom"> <input type="checkbox" id="chkZoom" checked>Automatic zoom to map area</label>
-	<br>
-	<div id="map"></div>
-
-		<div id="listContainer">
-			<p><span id="status" ></span></p>
-			<div id="result"></div>
-			<div id="next"></div>
-		</div>		
-
-
-</div>
 
 
 
-<script type= "application/javascript">
+
+
+<script type="text/javascript">
+
+
+$('#automaticZoom').on('click', function(){
+  
+    if($("#automaticZoom").attr("value")=="on") {
+
+    	$("#automaticZoom").attr('value', 'off');
+    	$("#automaticZoom").addClass('').removeClass('active');
+
+    } else {
+
+    	$("#automaticZoom").attr('value', 'on');
+    	$("#automaticZoom").addClass('active').removeClass('');
+    }
+    
+});
+
+$('#showProperties').on('click', function(){
+  
+    if($("#showProperties").attr("value")=="show") {
+
+    	$("#showProperties").addClass('').removeClass('active');
+    	$("#showProperties").attr('value', 'hide');
+    	$('#properties').css("display", "block");	
+    	$('#map').css("width", "60%");	
+		$("#showProperties").html('Hide Properties');
+
+
+    } else {
+
+		$("#showProperties").addClass('active').removeClass('');
+		$("#showProperties").attr('value', 'show');
+		$('#map').css("width", "75%");	
+		$("#showProperties").html('Show Properties');
+    	$('#properties').css("display", "none");	
+
+    }
+    
+});
+
+
+$('#selectArea').on('click', function(){
+    
+    if($("#selectArea").attr("value")=="set") {
+
+    	$("#selectArea").addClass('').removeClass('active');
+    	$("#selectArea").attr('value', 'remove');
+    	$("#selectArea").html('Remove Area');
+    	setSpatiatConstraint();
+
+    } else {
+
+    	$("#selectArea").addClass('active').removeClass('');
+    	$("#selectArea").attr('value', 'set');
+    	$("#selectArea").html('Select Area');  
+    	removeSpatiatConstraint();  	
+
+    }
+});
 
 
 $( document ).ready(function() {
@@ -87,7 +211,8 @@ $( document ).ready(function() {
 
 	setTemporalLimit();
 
-	
+	//$('#properties').css("display", "none");	
+
 	//Loading RDF properties from file.
 	$.get("rdf/historicmapsphen.rdf", function(xmlResponse){
 		var rdfClasses = getRdfClasses(xmlResponse);
@@ -95,7 +220,7 @@ $( document ).ready(function() {
 
 		for(var i = 0; i < rdfClasses.length; i++){
 			if(rdfClasses[i].children.length == 0){
-				$("#nav").append("<p id='pOntologyContentTag" + counter +"'><input type='checkbox' id='" + rdfClasses[i].name + "' value='" + rdfClasses[i].uri + "' class='chOntologyContent' >" + rdfClasses[i].name + " - <a href='" + rdfClasses[i].uri + "' target='_blank'>view</a> ");				
+				$("#properties").append("<p id='pOntologyContentTag" + counter +"'><input type='checkbox' id='" + rdfClasses[i].name + "' value='" + rdfClasses[i].uri + "' class='chOntologyContent' >" + rdfClasses[i].name );				
 				counter++;
 			}
 		}
@@ -103,11 +228,9 @@ $( document ).ready(function() {
 
 	//Creating list for query results.
 	$("#result").append('<ul id="itemsContainer" style="list-style-type:none"></ul>');
-
+	$('#properties').css("display", "none");	
 	
 });
-
-
 
 $("body").on("change", ".chOntologyContent", function() {
 
@@ -149,9 +272,9 @@ $("#searchField").keyup(function(event){
 })
 
 
-
 </script>
-	
+
+
 </body>
 </html>
 

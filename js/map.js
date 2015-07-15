@@ -5,7 +5,7 @@ function init() {
 
     L.mapbox.accessToken = 'pk.eyJ1Ijoiamltam9uZXMiLCJhIjoib2R0ZUVmTSJ9.9fXpF8LWx9bm2WSW6hg4PQ';	
 
-	LMap = L.mapbox.map('map', 'examples.map-i86nkdio').setView([52, 5], 3);
+	LMap = L.mapbox.map('map', 'examples.map-i86nkdio', {attributionControl: true}).setView([52, 5], 3);
 	markerGroup = new L.featureGroup();
 	markerGroup.addTo(LMap);
 	//markerGroup.addLayer(omnivore.wkt.parse('POINT(-90 52)'));
@@ -21,9 +21,12 @@ function init() {
 	};
 
 	// method that we will use to update the control based on feature properties passed
+	
+
+	/*
 	info.update = function () {
 		var bounds = LMap.getBounds();
-	    this._div.innerHTML = '<h4>Bounding Box</h4><hr><h5>NE:'
+	    this._div.innerHTML = '<h4>Bounding Box</h4><h5>NE:'
 	    	+bounds._northEast+'</h5><br/><h5>SW:'
 	    	+bounds._southWest+'</h5>';
 
@@ -37,8 +40,11 @@ function init() {
 
 	LMap.on('drag', updateBBox);
 	LMap.on('zoomend', updateBBox)
+	*/
 
+//<<<<<<<<<<<<<<<<<<<<
 
+///<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 }
 
 function plotGeometry(wkt) {
@@ -47,7 +53,7 @@ function plotGeometry(wkt) {
 	markerGroup.clearLayers();
 	markerGroup.addLayer(omnivore.wkt.parse(unescape(wkt)));
 
-	if ($('#chkZoom').is(":checked"))
+	if($("#automaticZoom").attr("value")=="on") 
 	{
 	  LMap.fitBounds(markerGroup.getBounds());
 	}

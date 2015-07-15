@@ -264,9 +264,9 @@ function myCallback(str) {
 			}
 
 
-			$("#result ul").append('<li onmousemove=plotGeometry("'+escape(wkt)+'");><a href=' + picture +'><img src="' +
-			picture + '" alt="'+ title +'" width="87" height="87"></a><p><a href=' + presentation +'>' + title + '</a><br>' + 
-			scale + '<br>' + year + '</p></br></br>'+ description +'</li>');
+			$("#result ul").append('<li onmousemove=plotGeometry("'+escape(wkt)+'");><a target="_blank" href=' + picture +'><img src="' +
+			picture + '" alt="'+ title +'" width="90" height="90" ></a><p><a target="_blank" href=' + presentation +'>' + title + '</a><br>' + 
+			scale + '<br>' + year + '</p><p>'+ description +'</p></li>');
 
 	}
 	  
