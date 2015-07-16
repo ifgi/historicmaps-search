@@ -262,7 +262,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:hbz:6:1-139822</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Angola</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -352,7 +352,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:hbz:6:1-104192</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Algerien</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -427,7 +427,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Tansania</mx:subfield>
     <mx:subfield code="c">Joh[ann] Walch</mx:subfield>
-    <mx:subfield code="n">41 13 Rechts 0 41 Hoch</mx:subfield>
+    <mx:subfield code="n">41 -14 Rechts 28 0 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://www.mapcruzin.com/free-maps-tanzania/tanzania_rel_2003.jpg</mx:subfield>
     <mx:subfield code="p">Fränkischer Kreis</mx:subfield>
     <mx:subfield code="y">9</mx:subfield>
@@ -456,7 +456,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
  <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:hbz:6:1-106156</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Tansania</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -560,7 +560,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
  <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:hbz:6:1-106147</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Polen</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -652,7 +652,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
  <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:hbz:6:1-112546</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Spanien</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -701,7 +701,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
     <mx:subfield code="a">Kirgistan</mx:subfield>
     <mx:subfield code="b">Partie de Bade</mx:subfield>
     <mx:subfield code="c">Friedrich Wilhelm Streit</mx:subfield>
-    <mx:subfield code="n">80 38 Rechts 68 43 Hoch</mx:subfield>
+    <mx:subfield code="n">81 38 Rechts 68 43 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://www.ezilon.com/maps/images/asia/Kyrgystan-physical-map.gif</mx:subfield>
     <mx:subfield code="p">Theil von Baden: [Schafhausen]</mx:subfield>
     <mx:subfield code="y">164</mx:subfield>
@@ -758,7 +758,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
  <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:hbz:6:1-112666</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Kirgisistan</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -990,7 +990,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
  <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:hbz:6:1-121106</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Australien</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -1286,7 +1286,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:0128-1-19946</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Pernambuco</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -1343,12 +1343,12 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Holland</mx:subfield>
     <mx:subfield code="c">Hrsg. ... von I. L. C. Rheinwald. Zusam[m]engesetzt v. C. P. Gl. Landm. P. Dewarat I. G. in Mannheim, ... Gestochen von B. F. Leizelt in Augsburg</mx:subfield>
-    <mx:subfield code="n">7 50 Rechts 3 53 Hoch</mx:subfield>
+    <mx:subfield code="n">8 49 Rechts 2 53 Hoch</mx:subfield>
     <mx:subfield code="fakebild">https://www.lib.utexas.edu/maps/europe/netherlands_pol87.jpg</mx:subfield>
     <mx:subfield code="p">1799</mx:subfield>
     <mx:subfield code="y">6</mx:subfield>
     <mx:subfield code="z">6</mx:subfield>
-    <mx:subfield code="9">Kriegs0Theater0Der0Teutschen0Und0Franzoesischen0Graenzlanden0Zwischen0Dem0Rhein0und0der0Mosel0Im0000Kriegs0Theater0Der0Teutschen0Und0Franzoesischen0Graenzlanden0Zwischen0Dem0Rhein0und0der0Mosel0Im000001600001799000000000000000000000000000000000</mx:subfield>
+    <mx:subfield code="9">Kriegs0Theater0Der0Teutschen0Und0Franzoesischen0Graenzlanden0Zwischen0Dem0Rhein0un0dder0Mosel0Im0000Kriegs0Theater0Der0Teutschen0Und0Franzoesischen0Graenzlanden0Zwischen0Dem0Rhein0und0der0Mosel0Im000001600001799000000000000000000000000000000000</mx:subfield>
   </mx:datafield>
   <mx:datafield tag="260" ind1=" " ind2=" ">
     <mx:subfield code="a">Mannheim</mx:subfield>
@@ -1597,7 +1597,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:0128-1-19958</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Holland</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
@@ -1906,7 +1906,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="856" ind1=" " ind2=" ">
     <mx:subfield code="q">text/html</mx:subfield>
-    <mx:subfield code="u">http://nbn-resolving.de/urn:nbn:de:0128-1-19910</mx:subfield>
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Benin</mx:subfield>
     <mx:subfield code="x">Resolving-System</mx:subfield>
     <mx:subfield code="z">kostenfrei</mx:subfield>
     <mx:subfield code="3">Volltext</mx:subfield>
