@@ -35,7 +35,8 @@ function getResultSetSize(){
 			  	.where("?map","maps:mapsTime","?time")
 			  	.where("?time","xsd:gYear","?year")
 			  	.where("?area","geo:asWKT","?wkt")
-			  .end();
+			  .end()
+			  .orderby("?year").distinct();
 
 	for(var i = 0; i<  arrayCheckboxes.length; i++) {
 		
@@ -279,21 +280,24 @@ function myCallback(str) {
 	loadedMaps = $("li").size();
 
 
-	$('#status').text('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);
+	$('#status').text('Karten ' + '('+parseInt(minVal)+'-'+parseInt(maxVal)+')' + ': '+ loadedMaps + ' von ' + totalMaps);
 	console.log('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);
 	//window.setTimeout(console.log("test"), 1000);
 
 
-	if(loadedMaps != totalMaps){
+	if(loadedMaps != totalMaps && loadedMaps < totalMaps ){
 
 		if(loadedMaps != 0){
-			$("#next").html("");
-			$("#next").append('<a onclick="executeQuery('+$("li").size()+')" href="#">More</a>'); 
+			$("#status").append('<a onclick="executeQuery('+$("li").size()+')" href="#"> [weiter]</a>'); 
+			//$("#next").html("");
+			//$("#next").append('<a onclick="executeQuery('+$("li").size()+')" href="#">Weiter</a>'); 
+
 		}
 
 	} else {
 
-		$("#next").html("");
+//		$("#next").html("");
+//		$("#next2").html("");
 	}
 	
 }
@@ -335,7 +339,9 @@ function callBackResultsetSize(str) {
 	totalMaps=jsonObj.results.bindings[0].QT_MAPS.value;
 	
 	//$('#status').append(' from ' + totalMaps);
-	$('#status').text('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);
+	$('#status').text('Karten (' + parseInt(minVal)+'-'+parseInt(maxVal)+'): ' + loadedMaps + ' von ' + totalMaps);
+	$("#status").append('<a onclick="executeQuery('+$("li").size()+')" href="#"> [weiter]</a>'); 
+
 	console.log('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);
 
 }

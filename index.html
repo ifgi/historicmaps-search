@@ -25,7 +25,8 @@
 <script src="js/jQRangeSlider/lib/jquery.mousewheel.min.js"></script>
 <script src="js/jQRangeSlider/jQRangeSlider-min.js"></script>
 <script src="js/jQRangeSlider/jQDateRangeSlider-min.js"></script>
-<link rel="stylesheet" id="themeCSS" href="js/jQRangeSlider/css/classic.css">
+<script src="js/jQRangeSlider/jQAllRangeSliders-withRuler-min.js"></script>
+<link rel="stylesheet" id="themeCSS" href="js/jQRangeSlider/css/iThing.css">
 
 <script src="js/jquery-sparql/jquery.sparql.js"></script>
 
@@ -102,28 +103,33 @@
 	<div id ="main">
 		
 		<div id="header">			
-			<div id="logox"><img height="85" width="342" src="http://www.ulb.uni-muenster.de/imperia/md/images/allgemein/farbunabhaengig/wwu.svg" alt="ulb_logo"><br></div>
+			<div id="logox"><img src="http://sammlungen.ulb.uni-muenster.de/domainimage/wwu_logo.gif"><br>
+      <span>Historisches Karten Portal</span></div>
 			
 			<div id="search">
         
         
-          <input type="text" size="50 "id="searchField" class="form-control" placeholder="What are you looking for?">
-  				<input id="searchButton" class="btn btn-default dropdown-toggle" type="button" name="btnSearch" value="Search"  onclick="executeQuery(0)">
+          <input type="text" size="50 "id="searchField" class="form-control" placeholder="Detailsuche...">
+  				<input id="searchButton" class="btn btn-default dropdown-toggle" type="button" name="btnSearch" value="Suchen"  onclick="executeQuery(0)">
           <br>
-							
+					
 				  <div id="slider"></div>	
+
 
 			</div>
 	    
-      <div id="logoy">.</div>
+      <div id="logoy"></div>
 
 		</div>
 
 
     
     <div id="toolbar">
+      
         <div id="mapheader">.</div>
-        <div id="status"><span id="status"></span></div>
+        <div id="status">
+          
+        </div>
         
     </div>
     
@@ -160,6 +166,7 @@
 	</div>
 
 
+  <div id="constraintsOverview"><p>Date Range:</p></div> 
 
 
 
@@ -252,7 +259,7 @@ $( document ).ready(function() {
 	$("#result").append('<ul id="itemsContainer" style="list-style-type:none"></ul>');
 	
   $('#properties').css("display", "none");	
-	
+	$('searchField').css("z-index", 9999);  
 
 
 
@@ -284,7 +291,8 @@ $("body").on("change", ".chOntologyContent", function() {
 
 
 //Setting min and max values for the time slider.
-$("#slider").bind("valuesChanged", function(e, data){
+  $("#slider").bind("valuesChanged", function(e, data){
+  
     //console.log("Values just changed. min: " + data.values.min + " max: " + data.values.max);
 
     maxVal = data.values.max;
@@ -292,7 +300,7 @@ $("#slider").bind("valuesChanged", function(e, data){
 
     executeQuery(0);
 
-});
+  });
 
 
 $( window ).load(function() {
