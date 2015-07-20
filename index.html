@@ -30,6 +30,10 @@
 
 <script src="js/jquery-sparql/jquery.sparql.js"></script>
 
+
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
+
 <script src="js/constants.js"></script>
 <script src="js/query.js"></script>
 <script src="js/map.js"></script>
@@ -61,7 +65,7 @@
   top:10px;right:10px;
   z-index:1;
   border-radius:3px;
-  width:120px;
+  width:170px;
   border:1px solid rgba(0,0,0,0.4);
   }
   .menu-ui a {
@@ -145,8 +149,8 @@
 
 				<nav class='menu-ui'>
 				  <a href='#' id='showProperties' value="show" class='active'>Show Properties</a>
-				  <a href='#' id='selectArea' value="set" class='active' >Select Area</a>
-				  <a href='#' id='automaticZoom' value="on" class='active' >Automatic Zoom</a>
+				  <a href='#' id='selectArea' value="set" class='active' >Apply Spatial Filter</a>
+				  <a href='#' id='automaticZoom' value="on" class='active' >Disable Automatic Zoom</a>
 				</nav>
 
 			</div>
@@ -180,11 +184,13 @@ $('#automaticZoom').on('click', function(){
 
     	$("#automaticZoom").attr('value', 'off');
     	$("#automaticZoom").addClass('').removeClass('active');
+      $("#automaticZoom").html('Enable Automatic Zoom');
 
     } else {
 
     	$("#automaticZoom").attr('value', 'on');
     	$("#automaticZoom").addClass('active').removeClass('');
+      $("#automaticZoom").html('Disable Automatic Zoom');
     }
     
 });
@@ -219,14 +225,14 @@ $('#selectArea').on('click', function(){
 
     	$("#selectArea").addClass('').removeClass('active');
     	$("#selectArea").attr('value', 'remove');
-    	$("#selectArea").html('Remove Area');
+    	$("#selectArea").html('Remove Spatial Filter');
     	setSpatiatConstraint();
 
     } else {
 
     	$("#selectArea").addClass('active').removeClass('');
     	$("#selectArea").attr('value', 'set');
-    	$("#selectArea").html('Select Area');  
+    	$("#selectArea").html('Apply Spatial Filter');  
     	removeSpatiatConstraint();  	
 
     }
