@@ -57,6 +57,7 @@
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link href="css/historicmaps-style.css" rel="stylesheet">
 
+<!--
 <style>
 
 .menu-ui {
@@ -97,7 +98,7 @@
         background:#3074a4;
         }
 </style>
-
+-->
 <html>
 <head>
 	<title>Historic Maps Search</title>	
@@ -145,13 +146,28 @@
 				<b><br></b><button id="btnProperties" onclick="executeQuery(0)" class="btn btn-default dropdown-toggle">Set Properties</button><br><br><br>
 
 			</div>
+
 			<div id="map">
 
+        <!--
 				<nav class='menu-ui'>
 				  <a href='#' id='showProperties' value="show" class='active'>Show Properties</a>
 				  <a href='#' id='selectArea' value="set" class='active' >Apply Spatial Filter</a>
 				  <a href='#' id='automaticZoom' value="on" class='active' >Disable Automatic Zoom</a>
 				</nav>
+        -->
+        
+        <div id="zoom" class="custom-buttons">
+          <a href='#' class='active' ><img id="imgZoom" value="on" title ="Disable automatic zoom to feature" src="img/unlocked.png"></a>          
+        </div>
+        
+        <div id="predicates" class="custom-buttons">
+          <a href='#' value="on" class='active' ><img id="imgPredicates" value="off" title ="Show RDF properties list" src="img/predicates.png"></a>          
+        </div>
+
+        <div id="bbox" class="custom-buttons">
+          <a href='#' value="on" class='active' ><img id="imgBBOX" value="off" title ="Apply spatial filter to current map view" src="img/bbox.png"></a>          
+        </div>
 
 			</div>
 
@@ -178,6 +194,69 @@
 <script type="text/javascript">
 
 
+$('#zoom').on('click', function(){
+
+  if($("#imgZoom").attr("value")=="on") {
+    
+    $("#imgZoom").attr("src", "img/locked.png");
+    $("#imgZoom").attr("title", "Enable automatic zoom to feature");
+    $("#imgZoom").attr("value", "off");
+
+  } else {
+
+    $("#imgZoom").attr("src", "img/unlocked.png");
+    $("#imgZoom").attr("title", "Disable automatic zoom to feature");
+    $("#imgZoom").attr("value", "on");
+
+  }
+
+});
+
+
+$('#predicates').on('click', function(){
+  
+    if($("#imgPredicates").attr("value")=="off") {
+
+      $("#imgPredicates").attr('value', 'on');
+      $('#properties').css("display", "block"); 
+      $('#map').css("width", "63%");  
+      $("#imgPredicates").attr("title","Hide RDF properties list");
+
+
+    } else {
+
+      $("#imgPredicates").attr('value', 'off');
+      $('#map').css("width", "75%");  
+      $('#properties').css("display", "none");  
+      $("#imgPredicates").attr("title","Show RDF properties list");
+    }
+    
+});
+
+
+$('#bbox').on('click', function(){
+    
+    if($("#imgBBOX").attr("value")=="on") {
+
+      $("#imgBBOX").attr("src", "img/bbox.png");
+      $("#imgBBOX").attr('value', 'off');
+      $("#imgBBOX").attr("title",'Apply spatial filter to current map view');
+
+      removeSpatiatConstraint();    
+
+    } else {
+
+      $("#imgBBOX").attr("src", "img/globe.png");
+      $("#imgBBOX").attr('value', 'on');
+      $("#imgBBOX").attr("title",'Remove spatial filter');
+      
+      setSpatiatConstraint();
+
+    }
+});
+
+
+/*
 $('#automaticZoom').on('click', function(){
   
     if($("#automaticZoom").attr("value")=="on") {
@@ -193,7 +272,7 @@ $('#automaticZoom').on('click', function(){
       $("#automaticZoom").html('Disable Automatic Zoom');
     }
     
-});
+}); 
 
 $('#showProperties').on('click', function(){
   
@@ -219,6 +298,7 @@ $('#showProperties').on('click', function(){
 });
 
 
+
 $('#selectArea').on('click', function(){
     
     if($("#selectArea").attr("value")=="set") {
@@ -238,7 +318,7 @@ $('#selectArea').on('click', function(){
     }
 });
 
-
+*/
 
 
 $( document ).ready(function() {

@@ -43,7 +43,7 @@ function init() {
 
 	  //** Removing (if applicable) spatial filter to current view.
 	  LMap.removeLayer(tmpBBOX);
-	  wktBBOX="";
+	  //wktBBOX="";
 
 	  $("#selectArea").addClass('').removeClass('active');
 	  $("#selectArea").attr('value', 'remove');
@@ -97,7 +97,7 @@ function plotGeometry(wkt) {
 	mapsGroup.clearLayers();
 	mapsGroup.addLayer(omnivore.wkt.parse(unescape(wkt)));
 
-	if($("#automaticZoom").attr("value")=="on") 
+	if($("#imgZoom").attr("value")=="on") 
 	{
 	  LMap.fitBounds(mapsGroup.getBounds());
 	}
@@ -138,7 +138,7 @@ function removeSpatiatConstraint(){
 	
 	//** Removing (if applicable) filter geometry.
 	featureGroup.clearLayers();
-	
+
 	//** Removing spatial constraint from the result panel.
 	executeQuery(0);
 

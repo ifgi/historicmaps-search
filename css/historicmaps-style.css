@@ -134,6 +134,7 @@ div#display {
 		border: 1px solid #B3B2B2;
 	}
 
+
 	div#listContainer {
 
 		height: 100%;
@@ -197,7 +198,123 @@ div#display {
 }
 
 
+div#zoom {
+
+	top:205px;left:10px;
+
+}
+	#zoom a{
+
+		padding:3px 4px;
+
+	}
+
+	#zoom img{
+
+		width: 19px;
+    	height: 21px;
+	}
 
 
+div#predicates {
 
+	top:232px;left:10px;
+
+}
+	
+	#predicates a {
+
+		padding:3px 4px;
+
+	}
+
+
+	#predicates img {
+
+		width: 19px;
+    	height: 21px;
+
+	}
+
+div#bbox {
+
+	top:259px;left:10px;
+}	
+
+	#bbox a{
+
+		padding:3px 3px;
+
+	}
+
+	#bbox img{
+
+		width: 21px;
+    	height: 21px;
+	}
+
+
+.custom-buttons {
+  background:#fff;
+  position:absolute;
+  z-index:1;
+  border-radius:3px;
+  border:1px solid rgba(0,0,0,0.4);
+  margin-left: auto;
+  margin-right: auto;
+  width:28px;
+  height: 28px;
+
+  text-align:center;
+  vertical-align: middle;
+  display: inline-block;
+  }
+
+.custom-buttons a {
+	width:100%;
+	height: 100%;
+	vertical-align: middle;
+
+
+	color:#404040;
+	display:block;
+
+
+	text-decoration:none;
+	border-bottom:1px solid rgba(0,0,0,0.25);
+
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+
+    }
+    .custom-buttons img {
+
+  		vertical-align: middle;
+	    display: inline-block;
+	    padding-left: 0;
+	    padding-top: 0;
+    	float: left;
+    	border; 0;
+
+    }
+    .custom-buttons a:first-child {
+      border-radius:3px 3px 0 0;
+      }
+    .custom-buttons a:last-child {
+      border:none;
+      border-radius:0 0 3px 3px;
+      }
+    .custom-buttons a:hover {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		color: rgba(0, 0, 0, 0.75);
+      }
+    .custom-buttons a.active {
+      background:#FFF;
+
+      }
+      .custom-buttons a.active:hover {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		color: rgba(0, 0, 0, 0.75);
+
+        }
 
