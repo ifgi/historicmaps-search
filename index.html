@@ -57,48 +57,6 @@
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link href="css/historicmaps-style.css" rel="stylesheet">
 
-<!--
-<style>
-
-.menu-ui {
-  background:#fff;
-  position:absolute;
-  top:10px;right:10px;
-  z-index:1;
-  border-radius:3px;
-  width:170px;
-  border:1px solid rgba(0,0,0,0.4);
-  }
-  .menu-ui a {
-    font-size:13px;
-    color:#404040;
-    display:block;
-    margin:0;padding:0;
-    padding:5px 10px;
-    text-decoration:none;
-    border-bottom:1px solid rgba(0,0,0,0.25);
-    text-align:center;
-    }
-    .menu-ui a:first-child {
-      border-radius:3px 3px 0 0;
-      }
-    .menu-ui a:last-child {
-      border:none;
-      border-radius:0 0 3px 3px;
-      }
-    .menu-ui a:hover {
-      background:#f8f8f8;
-      color:#404040;
-      }
-    .menu-ui a.active {
-      background:#3887BE;
-      color:#FFF;
-      }
-      .menu-ui a.active:hover {
-        background:#3074a4;
-        }
-</style>
--->
 <html>
 <head>
 	<title>Historic Maps Search</title>	
@@ -148,17 +106,9 @@
 			</div>
 
 			<div id="map">
-
-        <!--
-				<nav class='menu-ui'>
-				  <a href='#' id='showProperties' value="show" class='active'>Show Properties</a>
-				  <a href='#' id='selectArea' value="set" class='active' >Apply Spatial Filter</a>
-				  <a href='#' id='automaticZoom' value="on" class='active' >Disable Automatic Zoom</a>
-				</nav>
-        -->
-        
+       
         <div id="zoom" class="custom-buttons">
-          <a href='#' class='active' ><img id="imgZoom" value="on" title ="Disable automatic zoom to feature" src="img/unlocked.png"></a>          
+          <a href='#' class='active' ><img id="imgZoom" value="on" title ="Disable automatic zoom to map area" src="img/unlocked.png"></a>          
         </div>
         
         <div id="predicates" class="custom-buttons">
@@ -167,6 +117,10 @@
 
         <div id="bbox" class="custom-buttons">
           <a href='#' value="on" class='active' ><img id="imgBBOX" value="off" title ="Apply spatial filter to current map view" src="img/bbox.png"></a>          
+        </div>
+
+        <div id="resetview" class="custom-buttons">
+          <a href='#' value="on" class='active' ><img id="imgReset" value="off" title ="Remove all filters" src="img/reset.png"></a>          
         </div>
 
 			</div>
@@ -194,18 +148,26 @@
 <script type="text/javascript">
 
 
+
+$('#resetview').on('click', function(){
+
+  resetSearch();
+
+});
+
+
 $('#zoom').on('click', function(){
 
   if($("#imgZoom").attr("value")=="on") {
     
     $("#imgZoom").attr("src", "img/locked.png");
-    $("#imgZoom").attr("title", "Enable automatic zoom to feature");
+    $("#imgZoom").attr("title", "Enable automatic zoom to map area");
     $("#imgZoom").attr("value", "off");
 
   } else {
 
     $("#imgZoom").attr("src", "img/unlocked.png");
-    $("#imgZoom").attr("title", "Disable automatic zoom to feature");
+    $("#imgZoom").attr("title", "Disable automatic zoom to map area");
     $("#imgZoom").attr("value", "on");
 
   }
@@ -256,76 +218,13 @@ $('#bbox').on('click', function(){
 });
 
 
-/*
-$('#automaticZoom').on('click', function(){
-  
-    if($("#automaticZoom").attr("value")=="on") {
-
-    	$("#automaticZoom").attr('value', 'off');
-    	$("#automaticZoom").addClass('').removeClass('active');
-      $("#automaticZoom").html('Enable Automatic Zoom');
-
-    } else {
-
-    	$("#automaticZoom").attr('value', 'on');
-    	$("#automaticZoom").addClass('active').removeClass('');
-      $("#automaticZoom").html('Disable Automatic Zoom');
-    }
-    
-}); 
-
-$('#showProperties').on('click', function(){
-  
-    if($("#showProperties").attr("value")=="show") {
-
-    	$("#showProperties").addClass('').removeClass('active');
-    	$("#showProperties").attr('value', 'hide');
-    	$('#properties').css("display", "block");	
-    	$('#map').css("width", "63%");	
-		$("#showProperties").html('Hide Properties');
-
-
-    } else {
-
-		$("#showProperties").addClass('active').removeClass('');
-		$("#showProperties").attr('value', 'show');
-		$('#map').css("width", "75%");	
-		$("#showProperties").html('Show Properties');
-    	$('#properties').css("display", "none");	
-
-    }
-    
-});
-
-
-
-$('#selectArea').on('click', function(){
-    
-    if($("#selectArea").attr("value")=="set") {
-
-    	$("#selectArea").addClass('').removeClass('active');
-    	$("#selectArea").attr('value', 'remove');
-    	$("#selectArea").html('Remove Spatial Filter');
-    	setSpatiatConstraint();
-
-    } else {
-
-    	$("#selectArea").addClass('active').removeClass('');
-    	$("#selectArea").attr('value', 'set');
-    	$("#selectArea").html('Apply Spatial Filter');  
-    	removeSpatiatConstraint();  	
-
-    }
-});
-
-*/
-
 
 $( document ).ready(function() {
 
 
 	setTemporalLimit();
 
+  //alert(datasetMinDate + " - " + datasetMaxDate);
 	//$('#properties').css("display", "none");	
 
 	//Loading RDF properties from file.
@@ -402,6 +301,27 @@ $("#searchField").keyup(function(event){
 
 })
 
+
+function resetSearch(){
+
+    $("#searchField").val("");
+
+    //** Reset map view
+    LMap.setView([40, 5], 3);
+
+
+    //** Reset slider    
+    var bounds = $("#slider").rangeSlider("option", "bounds");
+    $("#slider").rangeSlider({range: {min: bounds.min, max: bounds.max}});
+
+    //** Removes map area geometry (if applicable)
+    mapsGroup.clearLayers();
+
+    removeSpatiatConstraint();
+    
+    executeQuery(0);
+
+}
 
 </script>
 

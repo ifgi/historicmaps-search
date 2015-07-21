@@ -253,6 +253,24 @@ div#bbox {
     	height: 21px;
 	}
 
+div#resetview {
+
+	top:296px;left:10px;
+}
+
+
+	#resetview a{
+
+		padding:2px 2px;
+
+	}
+
+	#resetview img{
+
+		width: 23px;
+    	height: 23px;
+	}
+
 
 .custom-buttons {
   background:#fff;

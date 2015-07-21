@@ -197,16 +197,16 @@ function sparqlQueryJson(queryStr, endpoint, callback, isDebug) {
 	}
 };
 
-// Send the query to the endpoint.
+//** Send the query to the endpoint.
 xmlhttp.send(querypart);
 
 };
 
 
-// Define a callback function to receive the SPARQL JSON result.
+//** Define a callback function to receive the SPARQL JSON result.
 function myCallback(str) {
 
-	// Convert result to JSON
+	//** Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
 	
 	console.log(jsonObj);	
@@ -223,7 +223,7 @@ function myCallback(str) {
 
 	for(var i = 0; i<  jsonObj.results.bindings.length; i++) {
 
-		//Creates list item.
+		//** Creates list item.
 		if (typeof jsonObj.results.bindings[i].map !== 'undefined') {
 
 			var index = jsonObj.results.bindings[i].wkt.value.indexOf(">");
@@ -274,31 +274,21 @@ function myCallback(str) {
 	
 	}
 
-	    
-
 
 	loadedMaps = $("li").size();
-
-
+	
 	$('#status').text('Karten ' + '('+parseInt(minVal)+'-'+parseInt(maxVal)+')' + ': '+ loadedMaps + ' von ' + totalMaps);
 	console.log('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);
-	//window.setTimeout(console.log("test"), 1000);
-
 
 	if(loadedMaps != totalMaps && loadedMaps < totalMaps ){
 
 		if(loadedMaps != 0){
+
 			$("#status").append('<a onclick="executeQuery('+$("li").size()+')" href="#"> [weiter]</a>'); 
-			//$("#next").html("");
-			//$("#next").append('<a onclick="executeQuery('+$("li").size()+')" href="#">Weiter</a>'); 
 
 		}
 
-	} else {
-
-//		$("#next").html("");
-//		$("#next2").html("");
-	}
+	} 
 	
 }
 
@@ -324,7 +314,7 @@ function myCallbackTemporalConstraint(str) {
 
 	}
 	
-	executeQuery();
+	executeQuery(0);
 
 }
 

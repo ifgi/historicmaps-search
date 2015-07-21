@@ -7,7 +7,7 @@ function init() {
 
     L.mapbox.accessToken = 'pk.eyJ1Ijoiamltam9uZXMiLCJhIjoib2R0ZUVmTSJ9.9fXpF8LWx9bm2WSW6hg4PQ';	
 
-	LMap = L.mapbox.map('map', 'examples.map-i86nkdio', {attributionControl: true}).setView([52, 5], 3);
+	LMap = L.mapbox.map('map', 'examples.map-i86nkdio', {attributionControl: true}).setView([40, 5], 3);
 	mapsGroup = new L.featureGroup();
 	mapsGroup.addTo(LMap);
 	 
@@ -43,7 +43,6 @@ function init() {
 
 	  //** Removing (if applicable) spatial filter to current view.
 	  LMap.removeLayer(tmpBBOX);
-	  //wktBBOX="";
 
 	  $("#selectArea").addClass('').removeClass('active');
 	  $("#selectArea").attr('value', 'remove');
@@ -51,44 +50,6 @@ function init() {
 
   	});
 
-	//mapsGroup.addLayer(omnivore.wkt.parse('POINT(-90 52)'));
-	//LMap.fitBounds(mapsGroup.getBounds());
-
-
-/*
-    var info = L.control();
-
-	info.onAdd = function (map) {
-	    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-	    this.update();
-	    return this._div;
-	};
-*/
-	// method that we will use to update the control based on feature properties passed
-	
-
-	/*
-	info.update = function () {
-		var bounds = LMap.getBounds();
-	    this._div.innerHTML = '<h4>Bounding Box</h4><h5>NE:'
-	    	+bounds._northEast+'</h5><br/><h5>SW:'
-	    	+bounds._southWest+'</h5>';
-
-	};
-
-	info.addTo(LMap);
-
-	function updateBBox() {
-		info.update();
-	}
-
-	LMap.on('drag', updateBBox);
-	LMap.on('zoomend', updateBBox)
-	*/
-
-//<<<<<<<<<<<<<<<<<<<<
-
-///<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 }
 
 function plotGeometry(wkt) {
@@ -118,8 +79,6 @@ function setSpatiatConstraint(){
 	tmpBBOX = L.rectangle(bounds, {color: "#ff7800", weight: 1});
 
 	tmpBBOX.addTo(LMap);
-
-
 
 	//** Setting spatial constraint and executing query to filter out records outside the given BBOX.
 	wktBBOX=toWKT(tmpBBOX);
