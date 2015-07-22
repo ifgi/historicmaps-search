@@ -20,7 +20,6 @@ function getResultSetSize(){
 			  .prefix("maps","http://www.geographicknowledge.de/vocab/maps#")
 			  .prefix("geo","http://www.opengis.net/ont/geosparql/1.0#")
 			  .prefix("xsd","http://www.w3.org/2001/XMLSchema#")
-			  .prefix("luc","http://www.ontotext.com/owlim/lucene#")
 			  .prefix("dct","http://purl.org/dc/terms/")
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
@@ -35,6 +34,7 @@ function getResultSetSize(){
 			  	.where("?map","maps:mapsTime","?time")
 			  	.where("?time","xsd:gYear","?year")
 			  	.where("?area","geo:asWKT","?wkt")
+			  	.optional().where("?map","dct:description","?description").end()					
 			  .end()
 			  .orderby("?year").distinct();
 
@@ -58,10 +58,10 @@ function getResultSetSize(){
 		sparqlQuery.filter("geof:sfWithin(?wkt,'"+wktBBOX+"'^^sf:wktLiteral)");
 	}
 
-	console.log("SPARQL Resultset Size -> "+sparqlQuery.serialiseQuery());
-	
 	sparqlQuery.filter("xsd:integer(?year) >= " + minVal + " && xsd:integer(?year) <= " + maxVal);
-	
+
+	console.log("SPARQL Resultset Size -> "+sparqlQuery.serialiseQuery());	
+
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, callBackResultsetSize, false);
 
 }
@@ -106,7 +106,6 @@ function executeQuery(offset) {
 			  .prefix("maps","http://www.geographicknowledge.de/vocab/maps#")
 			  .prefix("geo","http://www.opengis.net/ont/geosparql/1.0#")
 			  .prefix("xsd","http://www.w3.org/2001/XMLSchema#")
-			  .prefix("luc","http://www.ontotext.com/owlim/lucene#")
 			  .prefix("dct","http://purl.org/dc/terms/")
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
@@ -148,10 +147,11 @@ function executeQuery(offset) {
 		sparqlQuery.filter("geof:sfWithin(?wkt,'"+wktBBOX+"'^^sf:wktLiteral)");
 	}	
 
-	console.log("SPARQL -> "+sparqlQuery.serialiseQuery());
-	
+		
 	sparqlQuery.filter("xsd:integer(?year) >= " + minVal + " && xsd:integer(?year) <= " + maxVal);
 	
+	console.log("SPARQL -> "+sparqlQuery.serialiseQuery());
+
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallback, false);
 
 	//setInterval($('#status').text('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps),1000);
@@ -209,9 +209,7 @@ function myCallback(str) {
 	//** Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
 	
-	console.log(jsonObj);	
-
-	
+	console.log(jsonObj);		
 
 	if (queryOffset == 0){ 
 
@@ -220,7 +218,7 @@ function myCallback(str) {
 
 	}
 
-
+	
 	for(var i = 0; i<  jsonObj.results.bindings.length; i++) {
 
 		//** Creates list item.
@@ -268,15 +266,14 @@ function myCallback(str) {
 			$("#result ul").append('<li onmousemove=plotGeometry("'+escape(wkt)+'");><a target="_blank" href=' + picture +'><img src="' +
 			picture + '" alt="'+ title +'" width="90" height="90" ></a><p><a target="_blank" href=' + presentation +'>' + title + '</a><br>' + 
 			scale + '<br>' + year + '</p><p>'+ description +'</p></li>');
-
+			
 	}
 	  
 	
 	}
 
+	loadedMaps = $("#itemsContainer li").size();
 
-	loadedMaps = $("li").size();
-	
 	$('#status').text('Karten ' + '('+parseInt(minVal)+'-'+parseInt(maxVal)+')' + ': '+ loadedMaps + ' von ' + totalMaps);
 	console.log('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);
 

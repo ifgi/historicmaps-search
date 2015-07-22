@@ -42,18 +42,6 @@
 <script src="js/Window.js"></script>
 <script src="js/FilterResults.js"></script>
 
-<!--
-<link rel="stylesheet" href="css/historicmaps.css" />
-<link href="css/styles.css" rel="stylesheet">
-<link href="css/skins/line/aero.css" rel="stylesheet">
-<script src="js/icheck.js"></script>
-
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Fira+Sans">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.css">
-
-
-
--->
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link href="css/historicmaps-style.css" rel="stylesheet">
 
@@ -67,7 +55,7 @@
 		
 		<div id="header">			
 			<div id="logox"><img src="http://sammlungen.ulb.uni-muenster.de/domainimage/wwu_logo.gif"><br>
-      <span>Historisches Karten Portal</span></div>
+      <span>Portal Historischer Karten</span></div>
 			
 			<div id="search">
         
@@ -124,9 +112,6 @@
         </div>
 
 			</div>
-
-
-
 
 
 			<div id="listContainer" >
@@ -224,9 +209,6 @@ $( document ).ready(function() {
 
 	setTemporalLimit();
 
-  //alert(datasetMinDate + " - " + datasetMaxDate);
-	//$('#properties').css("display", "none");	
-
 	//Loading RDF properties from file.
 	$.get("rdf/historicmapsphen.rdf", function(xmlResponse){
 		var rdfClasses = getRdfClasses(xmlResponse);
@@ -250,49 +232,37 @@ $( document ).ready(function() {
 
 });
 
-$("body").on("change", ".chOntologyContent", function() {
 
-	var res = new Array();
-		$(".chOntologyContent").each(function( index ){
-	if(this.checked){
-		res.push(this.value);
-	}
-	});
-	
-	arrayCheckboxes=res;
+//** Updates array with the current selected predicates.
+$("body").on("change", "#properties", function() {
 
+  var selected = [];
 
-
-  $('#btn-search').on('click', function(e) {
-
-    e.preventDefault();
-    $('#search').animate({width: 'toggle'}).focus();
-
+  $('#properties input:checked').each(function() {
+      selected.push((this).value);
   });
 
-
+	arrayCheckboxes=selected;
 
 });
 
 
-//Setting min and max values for the time slider.
-  $("#slider").bind("valuesChanged", function(e, data){
-  
-    //console.log("Values just changed. min: " + data.values.min + " max: " + data.values.max);
+//** Setting min and max values for the time slider.
+$("#slider").bind("valuesChanged", function(e, data){
 
-    maxVal = data.values.max;
-    minVal = data.values.min;
+  maxVal = data.values.max;
+  minVal = data.values.min;
 
-    executeQuery(0);
+  executeQuery(0);
 
-  });
+});
 
 
 $( window ).load(function() {
-	console.log( "window loaded" );
+	console.log( "Debug Mode: Window Loaded" );
 });
 
-//Firing the search button once ENTER is pressed on the search text field.
+//** Firing the search button once ENTER is pressed on the search text field.
 $("#searchField").keyup(function(event){
 
     if(event.keyCode == 13){
@@ -309,14 +279,15 @@ function resetSearch(){
     //** Reset map view
     LMap.setView([40, 5], 3);
 
-
     //** Reset slider    
     var bounds = $("#slider").rangeSlider("option", "bounds");
     $("#slider").rangeSlider({range: {min: bounds.min, max: bounds.max}});
 
-    //** Removes map area geometry (if applicable)
-    mapsGroup.clearLayers();
+    //** Remove all thematic constraints
+    $('#properties').find('input[type=checkbox]:checked').removeAttr('checked');
 
+    //** Removes map area geometry or spatial constraint (if applicable)
+    mapsGroup.clearLayers();
     removeSpatiatConstraint();
     
     executeQuery(0);
