@@ -13,7 +13,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Angola</mx:subfield>
     <mx:subfield code="b">[Kupfer gest., kolor. Alte Zählung]</mx:subfield>
-    <mx:subfield code="c">Hrsg. von G. D. Reymann, fortges. durch C.W. v. Oesfeld und F. Handtke</mx:subfield>
+    <mx:subfield code="c">Angola (auf Kimbundu, Umbundu und Kikongo Ngola genannt)ist ein Staat in Südwest-Afrika. Nationalfeiertag ist der 11. November, Tag der Unabhängigkeit (1975). </mx:subfield>
     <mx:subfield code="n">24 -18 Rechts 10 -5 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://www.wordtravels.com/images/map/Angola_map.jpg</mx:subfield>
     <mx:subfield code="p">Cassel</mx:subfield>
@@ -302,10 +302,9 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Algerien</mx:subfield>
     <mx:subfield code="b">mit einer Übersichtskarte</mx:subfield>
-    <mx:subfield code="c">D[aniel] F[riedrich] Sotzmann</mx:subfield>
+    <mx:subfield code="c">Algerien ist – knapp vor der Demokratischen Republik Kongo – der größte Staat des afrikanischen Kontinents. Er grenzt im Norden an das Mittelmeer, im Westen an Mauretanien, Marokko und die von Marokko beanspruchte Westsahara, im Süden an Mali und Niger und im Osten an Libyen sowie Tunesien. </mx:subfield>
     <mx:subfield code="n">15 17 Rechts -9 37 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://www.animalbase.uni-goettingen.de/mapimage/map-algeria.jpg</mx:subfield>
-    <mx:subfield code="p">Halberstadt nebst den Grafschaften Wernigerode und Hohenstein und der Abtey Quedlinburg</mx:subfield>
     <mx:subfield code="y">4</mx:subfield>
     <mx:subfield code="z">4</mx:subfield>
     <mx:subfield code="9">Atlas0der0Preussischen0Provinzen00000000000000000000000000000000000000000000000000000000000000000000Atlas0der0Preussischen0Provinzen0000000000000000000000000000000000000000000000000000000000000000000001400001800000000000000000000000000000000000</mx:subfield>
@@ -426,7 +425,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Tansania</mx:subfield>
-    <mx:subfield code="c">Joh[ann] Walch</mx:subfield>
+    <mx:subfield code="c">Tansania (amtlich Vereinigte Republik Tansania, Swahili Jamhuri ya Muungano wa Tanzania) ist ein Staat in Ostafrika. Es liegt am Indischen Ozean und grenzt an Kenia und Uganda im Norden, Ruanda, Burundi und die DR Kongo im Westen und Sambia, Malawi und Mosambik im Süden. Es ist seit der Unabhängigkeit vom Vereinigten Königreich am 9. Dezember 1961 Mitgliedstaat des Commonwealth of Nations.</mx:subfield>
     <mx:subfield code="n">41 -14 Rechts 28 0 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://www.mapcruzin.com/free-maps-tanzania/tanzania_rel_2003.jpg</mx:subfield>
     <mx:subfield code="p">Fränkischer Kreis</mx:subfield>
@@ -530,7 +529,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Polen</mx:subfield>
-    <mx:subfield code="c">Joh[ann] Walch</mx:subfield>
+    <mx:subfield code="c">Polen (polnisch Polska, amtlich Rzeczpospolita Polska, deutsch Republik Polen) ist eine parlamentarische Republik in Mitteleuropa. Hauptstadt und zugleich größte Stadt des Landes ist Warschau.</mx:subfield>
     <mx:subfield code="n">24 48 Rechts 13 54 Hoch</mx:subfield>
     <mx:subfield code="fakebild">https://www.lonelyplanet.com/maps/europe/poland/map_of_poland.jpg</mx:subfield>
     <mx:subfield code="p">Bayerischer Kreis</mx:subfield>
@@ -600,7 +599,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Spanien</mx:subfield>
-    <mx:subfield code="c">Friedrich Wilhelm Streit</mx:subfield>
+    <mx:subfield code="c">Spanien (amtlich Königreich Spanien, spanisch Reino de España, auf Galicisch Reino de España, Katalanisch Regne d Espanya, Asturisch Reinu d España, Baskisch Espainiako Erresuma, Aranesisch Reialme d Espanha) ist ein Staat im Südwesten Europas und eine parlamentarische Erbmonarchie.</mx:subfield>
     <mx:subfield code="n">3 35 Rechts -9 44 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://runiga.es/imagenes/documentos/mapa-fisico.jpg</mx:subfield>
     <mx:subfield code="p">Theil von Bayern: [Regensburg, Burglengenfeld]</mx:subfield>
@@ -700,7 +699,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Kirgistan</mx:subfield>
     <mx:subfield code="b">Partie de Bade</mx:subfield>
-    <mx:subfield code="c">Friedrich Wilhelm Streit</mx:subfield>
+    <mx:subfield code="c">Kirgisistan (oft auch Kirgistan oder Kirgisien; amtlich Kirgisische Republik) ist ein Binnenstaat mit rund 5,5 Millionen Einwohnern in Zentralasien. </mx:subfield>
     <mx:subfield code="n">81 38 Rechts 68 43 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://www.ezilon.com/maps/images/asia/Kyrgystan-physical-map.gif</mx:subfield>
     <mx:subfield code="p">Theil von Baden: [Schafhausen]</mx:subfield>
@@ -795,7 +794,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Australien</mx:subfield>
-    <mx:subfield code="c">nach den neuesten und sichersten astronomischen Ortsbestimmungen entworfen und berichtiget auf der Sternwarte Seeberg bey Gotha. gezeichnet von I. C. M. Reinecke</mx:subfield>
+    <mx:subfield code="c">Der Staat Australien (englisch Australia) liegt auf der Südhalbkugel nordwestlich von Neuseeland und südlich von Indonesien, Osttimor und Papua-Neuguinea und umfasst neben der kontinentalen Landmasse die vorgelagerte Insel Tasmanien und einige kleinere Inseln.</mx:subfield>
     <mx:subfield code="n">157 -40 Rechts 109 -9 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://cdn2.notonthehighstreet.com/system/product_images/images/001/120/263/original_australia-map-heart.jpg</mx:subfield>
     <mx:subfield code="p">[Östlicher Teil von Russland]</mx:subfield>
@@ -1030,7 +1029,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Pernambuco</mx:subfield>
-    <mx:subfield code="c">Hrsg. ... von I. L. C. Rheinwald. Zusam[m]engesetzt v. C. P. Gl. Landm. P. Dewarat I. G. in Mannheim, ... Gestochen von B. F. Leizelt in Augsburg</mx:subfield>
+    <mx:subfield code="c">Pernambuco ist ein Bundesstaat im Nordosten Brasiliens mit der Hauptstadt Recife. Das Territorium Pernambucos hat eine Ausdehnung von ca. 98.000 km² und ist damit etwa vergleichbar mit der Größe Portugals.</mx:subfield>
     <mx:subfield code="n">-34 -9 Rechts -40 -7 Hoch</mx:subfield>
     <mx:subfield code="fakebild">https://www.achetudoeregiao.com.br/pe/PE.GIF/mapaturistico.jpg</mx:subfield>
     <mx:subfield code="p">1798</mx:subfield>
@@ -1341,8 +1340,8 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
     <mx:subfield code="a">(DE-604)HT014557465</mx:subfield>
   </mx:datafield>
   <mx:datafield tag="245" ind1="0" ind2="0">
-    <mx:subfield code="a">Holland</mx:subfield>
-    <mx:subfield code="c">Hrsg. ... von I. L. C. Rheinwald. Zusam[m]engesetzt v. C. P. Gl. Landm. P. Dewarat I. G. in Mannheim, ... Gestochen von B. F. Leizelt in Augsburg</mx:subfield>
+    <mx:subfield code="a">Niederlande</mx:subfield>
+    <mx:subfield code="c">Die Niederlande (niederländisch Nederland, friesisch Nederlân; umgangssprachlich Holland) sind eine parlamentarische Monarchie und einer der vier autonomen Landesteile des Königreiches der Niederlande. Das weit überwiegend im nördlichen Westeuropa liegende Land wird durch die Nordsee im Norden und Westen, das Königreich Belgien im Süden und die Bundesrepublik Deutschland im Osten begrenzt.</mx:subfield>
     <mx:subfield code="n">8 49 Rechts 2 53 Hoch</mx:subfield>
     <mx:subfield code="fakebild">https://www.lib.utexas.edu/maps/europe/netherlands_pol87.jpg</mx:subfield>
     <mx:subfield code="p">1799</mx:subfield>
@@ -1650,7 +1649,7 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
   </mx:datafield>
   <mx:datafield tag="245" ind1="0" ind2="0">
     <mx:subfield code="a">Benin</mx:subfield>
-    <mx:subfield code="c">Hrsg. ... von I. L. C. Rheinwald. Zusam[m]engesetzt v. C. P. Gl. Landm. P. Dewarat I. G. in Mannheim, ... Gestochen von B. F. Leizelt in Augsburg</mx:subfield>
+    <mx:subfield code="c">Bis 1975 hieß das Land Dahomey. Die Bezeichnung steht in Tradition zum historischen Königreich Dahomey, das bis zur Eroberung durch die Franzosen Ende des 19. Jahrhunderts den südlichen Teil des modernen Staates und des Nachbarstaates Togo umfasste. Beim Human Development Index steht das Land auf dem 165. Platz von 187.</mx:subfield>
     <mx:subfield code="n">4 5 Rechts 0 12 Hoch</mx:subfield>
     <mx:subfield code="fakebild">http://www.map-library.com/maps/maps-of-africa/maps-of-benin/detailed-administrative-and-political-map-of-benin-with-roads-cities-and-airports.jpg</mx:subfield>
     <mx:subfield code="p">1794</mx:subfield>
@@ -1936,3 +1935,221 @@ INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, r
 </mx:record>
 
 ', null, 'Kriegs Theater Der Teutschen Und Franzoesischen Graenzlanden Zwischen Dem Rhein und der Mosel Im Jahr ...', null, 'a|||||||', '141128s1794uuuu|||||| | |||||||||||ger||', null, null, null);
+
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477241, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477241</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Island</mx:subfield>
+    <mx:subfield code="c">Geographisch gehört Island zu Nordeuropa, geologisch zu Europa und Nordamerika, geopolitisch zu den Nordischen Ländern und kulturell zu Nordwesteuropa.</mx:subfield>
+    <mx:subfield code="n">-9 62 Rechts -25 68 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">https://parkersiniceland.files.wordpress.com/2014/01/map_of_iceland.jpg</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120441</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1650</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Island</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, 'Kriegs Theater Der Teutschen Und Franzoesischen Graenzlanden Zwischen Dem Rhein und der Mosel Im Jahr ...', null, 'a|||||||', '141128s1794uuuu|||||| | |||||||||||ger||', null, null, null);
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477242, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477242</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Japan</mx:subfield>
+    <mx:subfield code="c">Die Nomenklatur des Landesnamens stammt von der offiziellen Korrespondenz der japanischen Herrscher mit der chinesischen Sui-Dynastie (6.–7. Jahrhundert) und bezieht sich auf die von China aus gesehen östliche Lage des Landes.</mx:subfield>
+    <mx:subfield code="n">150 31 Rechts 129 55 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">http://www.maproom.org/00/05/0005.jpg</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120442</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1605</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Japan</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, '', null, '', '', null, null, null);
+
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477243, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477243</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Frankreich</mx:subfield>
+    <mx:subfield code="c">Die wichtigsten nationalen Leitideen werden in der Erklärung der Menschen- und Bürgerrechte zum Ausdruck gebracht. Die Französische Republik wird in ihrer Verfassung als unteilbar, laizistisch, demokratisch und sozial erklärt. Ihr Grundsatz lautet: „Regierung des Volkes durch das Volk und für das Volk“</mx:subfield>
+    <mx:subfield code="n">9 41 Rechts -6 51 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">http://conservativetribune.com/wp-content/uploads/2015/07/Surrender-Flag-550x377.jpg</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120443</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1940</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Frankreich</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, '', null, '', '', null, null, null);
+
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477244, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477244</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Kanada</mx:subfield>
+    <mx:subfield code="c">Kanada (englisch und französisch Canada) ist ein nordamerikanischer Staat, der zwischen dem Atlantik im Osten und dem Pazifik im Westen liegt und nordwärts bis zum Arktischen Ozean reicht.</mx:subfield>
+    <mx:subfield code="n">-44 43 Rechts -141 83 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">https://www.interkart-antik.de/media/catalog/product/cache/10/small_image/800x600/9df78eab33525d08d6e5fb8d27136e95/A/N/AN13A022.JPG</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120444</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1655</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Kanada</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, '', null, '', '', null, null, null);
+
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477245, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477245</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Nepal</mx:subfield>
+    <mx:subfield code="c">Nepal ist ein Binnenstaat in Südasien. Er grenzt im Norden an die Volksrepublik China und im Osten, Süden und Westen an Indien. Die Hauptstadt Kathmandu ist der Sitz der SAARC (Südasiatische Vereinigung für regionale Kooperation).</mx:subfield>
+    <mx:subfield code="n">90 25 Rechts 78 32 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">http://www.nepal-trekking.de/images/maps/nepalgebiet.jpg</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120445</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1755</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Nepal</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, '', null, '', '', null, null, null);
+
+
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477246, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477246</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Brasilien</mx:subfield>
+    <mx:subfield code="c">Brasilien (portugiesisch: Brasil) ist der flächen- und bevölkerungsmäßig fünftgrößte Staat der Erde. Es ist der größte und bevölkerungsreichste (über 200 Millionen Einwohner) Staat Südamerikas, von dessen Fläche er 47,3 Prozent einnimmt.[6] Brasilien hat mit jedem südamerikanischen Staat außer Chile und Ecuador eine gemeinsame Grenze.</mx:subfield>
+    <mx:subfield code="n">-32 -33 Rechts -75 6 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">https://ranzinzatudo.files.wordpress.com/2011/06/1636johannes-janssonius-beautiful-map-of-south-america-engraved-by-his-brother-in-law-and-business-partner-henricus-hondius-decorative-title-cartouche-embellished-with-indians-and-cann.jpg</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120446</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1680</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Brasilien</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, '', null, '', '', null, null, null);
+
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477247, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477247</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Griechenland</mx:subfield>
+    <mx:subfield code="c">Griechenland ist seit 1981 Mitglied der Europäischen Union und bildet mit 18 weiteren EU-Mitgliedstaaten eine Währungsunion, die Eurozone. Es ist Mitglied der Vereinten Nationen, der OECD, der NATO, der OSZE und des Europarates. Der Human Development Index zählt Griechenland zu den sehr hoch entwickelten Staaten.</mx:subfield>
+    <mx:subfield code="n">26 34 Rechts 19 41 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">http://www.vintage-maps.com/images/product_images/popup_images/10425_0.jpg</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120447</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1540</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Griechenland</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, '', null, '', '', null, null, null);
+
+
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477248, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477248</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Finnland</mx:subfield>
+    <mx:subfield code="c">Das Gebiet Finnlands, das seit Jahrtausenden dünn besiedelt war, trat mit der Eingliederung in das Schwedische Reich ab dem 12. Jahrhundert in die historische Zeit ein. Es blieb für viele Jahrhunderte integraler Teil Schwedens, bis es 1809 an Russland abgetreten wurde, unter dessen Herrschaft sich Finnland als Nation entwickelte. 1917 erlangte das Land die staatliche Unabhängigkeit.</mx:subfield>
+    <mx:subfield code="n">32 59 Rechts 20 70 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">http://www.mapandmaps.com/6478-thickbox_default/skandinavien-norwegen-schweden-finnland-litauen-estland-alte-karte-dahlberg-1712.jpg</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120448</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1900</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Finland</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, '', null, '', '', null, null, null);
+
+
+
+INSERT INTO KATALOG (katkey, hbzid, updatedate, creationdate, issn, isbn, xml, rawxml, volumn, title, titleparentid, physType, type, ezbId, vldata, hbztoc) VALUES (54477249, 'HT014557433', '2015-07-01', '2014-12-15', null, null, null, '<?xml version="1.0" encoding="UTF-8"?>
+<mx:record xmlns:mx="http://www.loc.gov/MARC21/slim" id="ID5447724">
+  <mx:leader>03950nem a2200024 c 4500</mx:leader>
+  <mx:controlfield tag="001">54477249</mx:controlfield>
+  <mx:datafield tag="245" ind1="0" ind2="0">
+    <mx:subfield code="a">Neuseeland</mx:subfield>
+    <mx:subfield code="c">Neuseeland (englisch New Zealand ist ein geographisch isolierter Inselstaat im südlichen Pazifik. Er besteht aus einer Nord- und einer Südinsel sowie zahlreichen kleineren Inseln. Die nächstgelegenen Staaten befinden sich im Westen mit Australien (die Westküsten der beiden Hauptinseln Neuseelands sind zwischen 1530 km und rund 2100 km von der Ostküste Australiens und Tasmaniens entfernt), im Norden mit der französischen Insel Neukaledonien und den Inselstaaten Tonga und Fidschi sowie als Kontinent die Antarktis im Süden.</mx:subfield>
+    <mx:subfield code="n">179 -47 Rechts 165 -32 Hoch</mx:subfield>
+    <mx:subfield code="fakebild">http://ebay.billerantik.de/ebay/bildertaich/6115_Neuseeland.jpg</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="776" ind1="0" ind2="8">
+    <mx:subfield code="w">()CT0050120449</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="260" ind1=" " ind2=" ">
+    <mx:subfield code="c">1620</mx:subfield>
+  </mx:datafield>
+  <mx:datafield tag="856" ind1=" " ind2=" ">
+    <mx:subfield code="u">https://de.wikipedia.org/wiki/Neuseeland</mx:subfield>
+  </mx:datafield>
+</mx:record>
+
+', null, '', null, '', '', null, null, null);
