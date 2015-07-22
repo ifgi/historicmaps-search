@@ -281,7 +281,7 @@ function myCallback(str) {
 
 		if(loadedMaps != 0){
 
-			$("#status").append('<a onclick="executeQuery('+$("li").size()+')" href="#"> [weiter]</a>'); 
+			$("#status").append('<a onclick="executeQuery('+$("#itemsContainer li").size()+')" href="#"> [weiter]</a>'); 
 
 		}
 
