@@ -69,11 +69,19 @@
 
 			</div>
 	    
-      <div id="logoy"></div>
+      <div id="logoy">
+            
+
+            <a target="_blank" href="https://github.com/ifgi/historicmaps-search" title="Projekt auf GitHub" style="padding-right:10px" ><img src="img/github.png" width="30px" height="30px"></a>
+            <a target="_blank" href="http://www.uni-muenster.de/Geoinformatics/research/projects/lodum.html" title="Linked Open Data University of M&#252;nster"><img src="img/rdf.png" width="28px" height="30px"></a>
+            <a target="_blank" href="http://ulb.uni-muenster.de/" title="Universit&#228;ts- und Landesbibliothek M&#252;nster"><img src="img/ulb.png" width="30px" height="30px"></a>
+            <a target="_blank" href="http://ifgi.uni-muenster.de" title="Institut f&#252;r Geoinformatik"><img src="img/ifgi.png" width="25px" height="30px"></a>
+            
+      </div>
 
 		</div>
 
-
+<div id="github"></div>
     
     <div id="toolbar">
       
@@ -122,10 +130,12 @@
 
 
 		</div>
+
 	</div>
 
 
-  <div id="constraintsOverview"><p>Date Range:</p></div> 
+
+<!--  <div id="constraintsOverview"><p>Date Range:</p></div> -->
 
 
 
@@ -283,7 +293,7 @@ function resetSearch(){
     //** Remove all thematic constraints
     $('#properties').find('input[type=checkbox]:checked').removeAttr('checked');
     arrayCheckboxes = [];
-    
+
     //** Removes map area geometry or spatial constraint (if applicable)
     mapsGroup.clearLayers();
     removeSpatiatConstraint();

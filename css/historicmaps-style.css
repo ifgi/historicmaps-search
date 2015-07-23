@@ -69,9 +69,23 @@ div#header {
 
 	div#logoy {
 	    width:25%;
-	    float: left;
+	    float: right;
 	    padding: 0px 0px 0px 0px;
 	}
+
+	#logoy a{
+		float: right;
+		padding-top: 15px;		
+		padding-right: 5px;
+
+	}
+	#logoy img {
+
+
+		float:right;
+		
+	}
+
 
 div#toolbar {
     width: 100%;    
