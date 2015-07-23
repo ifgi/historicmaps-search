@@ -154,8 +154,6 @@ function executeQuery(offset) {
 
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallback, false);
 
-	//setInterval($('#status').text('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps),1000);
-	//$('#status').text('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);	
 
 }
 

@@ -132,8 +132,6 @@
 
 <script type="text/javascript">
 
-
-
 $('#resetview').on('click', function(){
 
   resetSearch();
@@ -165,7 +163,7 @@ $('#predicates').on('click', function(){
     if($("#imgPredicates").attr("value")=="off") {
 
       $("#imgPredicates").attr('value', 'on');
-      $('#properties').css("display", "block"); 
+      $("#properties").toggle("slow");
       $('#map').css("width", "63%");  
       $("#imgPredicates").attr("title","Hide RDF properties list");
 
@@ -174,7 +172,7 @@ $('#predicates').on('click', function(){
 
       $("#imgPredicates").attr('value', 'off');
       $('#map').css("width", "75%");  
-      $('#properties').css("display", "none");  
+      $("#properties").toggle("slow");
       $("#imgPredicates").attr("title","Show RDF properties list");
     }
     
@@ -284,11 +282,13 @@ function resetSearch(){
 
     //** Remove all thematic constraints
     $('#properties').find('input[type=checkbox]:checked').removeAttr('checked');
-
+    arrayCheckboxes = [];
+    
     //** Removes map area geometry or spatial constraint (if applicable)
     mapsGroup.clearLayers();
     removeSpatiatConstraint();
     
+        
     executeQuery(0);
 
 }
