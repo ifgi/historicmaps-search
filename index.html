@@ -216,7 +216,7 @@ $( document ).ready(function() {
 
 	setTemporalLimit();
 
-	//Loading RDF properties from file.
+	//** Loading RDF properties from file. (Done with a local file to avoid CORS issues)
 	$.get("rdf/historicmapsphen.rdf", function(xmlResponse){
 		var rdfClasses = getRdfClasses(xmlResponse);
 		var counter = 0;
@@ -229,11 +229,12 @@ $( document ).ready(function() {
 		}
 	})
 
-	//Creating list for query results.
+	//**Creating list for query results.
 	$("#result").append('<ul id="itemsContainer" style="list-style-type:none"></ul>');
 	
+  //** Hiding predicates list.
   $('#properties').css("display", "none");	
-	//$('searchField').css("z-index", 9999);  
+
 
 
 
@@ -281,14 +282,17 @@ $("#searchField").keyup(function(event){
 
 function resetSearch(){
 
+    //** Clear text search field
     $("#searchField").val("");
 
     //** Reset map view
     LMap.setView([40, 5], 3);
 
     //** Reset slider    
+   
     var bounds = $("#slider").rangeSlider("option", "bounds");
-    $("#slider").rangeSlider({range: {min: bounds.min, max: bounds.max}});
+    $("#slider").rangeSlider({range: {min: bounds.min, max: bounds.max}, enabled: true});
+    setSliderRange(bounds.min, bounds.max, bounds.min, bounds.max);
 
     //** Remove all thematic constraints
     $('#properties').find('input[type=checkbox]:checked').removeAttr('checked');
@@ -299,7 +303,7 @@ function resetSearch(){
     removeSpatiatConstraint();
     
         
-    executeQuery(0);
+    //executeQuery(0);
 
 }
 

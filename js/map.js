@@ -66,9 +66,6 @@ function plotGeometry(wkt) {
 
 function setSpatiatConstraint(){
 	
-	//** Disabling Set Spatial Constraint Button
-	//$('#btnSpatialConstraint').prop('disabled', true);
-	//$('#btnRemoveSpatialConstraint').prop('disabled', false);
 
 	//** Removes any previously drawn filter geometry.
 	featureGroup.clearLayers();
@@ -86,10 +83,6 @@ function setSpatiatConstraint(){
 
 function removeSpatiatConstraint(){
 	
-	//** Enabling Set Spatial Constraint Button
-	//$('#btnSpatialConstraint').prop('disabled', false);
-	//$('#btnRemoveSpatialConstraint').prop('disabled', true);
-
 	//** Removing spatial constraint.
 	LMap.removeLayer(tmpBBOX);
 	wktBBOX="";

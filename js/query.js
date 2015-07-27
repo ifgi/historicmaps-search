@@ -45,9 +45,9 @@ function getResultSetSize(){
 
 	}
 
-	//** Deactivated due tests using Parliament (No full text search available)
-	//sparqlQuery.where("?string","luc:mapsLiteralIndex",'"*'+document.getElementById("searchField").value+'*~0.9 "');
-	//sparqlQuery.where("?map","?predicate","?string");
+	//** - Deactivated due tests using Parliament (No full text search available)
+	//** sparqlQuery.where("?string","luc:mapsLiteralIndex",'"*'+document.getElementById("searchField").value+'*~0.9 "');
+	//** sparqlQuery.where("?map","?predicate","?string");
 	//**
 
 	//** Filtering key words in title and description.
@@ -66,7 +66,7 @@ function getResultSetSize(){
 
 }
 
-function setTemporalLimit(){
+function setTemporalLimit(){	
 
 	var sparqlQuery = $.sparql("http://data.uni-muenster.de/historicmaps/sparql")
 			  .prefix("maps","http://www.geographicknowledge.de/vocab/maps#")
@@ -87,14 +87,12 @@ function setTemporalLimit(){
 			  .orderby("?year").distinct();
 
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallbackTemporalConstraint, false);
-
+	
 }
 
 //** Main Query
 
-function executeQuery(offset) {
-
-        queryOffset = offset;
+function executeQuery(queryOffset) {     
 
 	if (queryOffset==null || queryOffset==0){
 
@@ -135,8 +133,8 @@ function executeQuery(offset) {
 	}
 
 	//** Deactivated due tests using Parliament (No full text search available)
-	//sparqlQuery.where("?string","luc:mapsLiteralIndex",'"*'+document.getElementById("searchField").value+'*~0.9 "');
-	//sparqlQuery.where("?map","?predicate","?string");
+	//** sparqlQuery.where("?string","luc:mapsLiteralIndex",'"*'+document.getElementById("searchField").value+'*~0.9 "');
+	//** sparqlQuery.where("?map","?predicate","?string");
 	//**
 
 	//** Filtering key words in title and description.
@@ -153,7 +151,7 @@ function executeQuery(offset) {
 	console.log("SPARQL -> "+sparqlQuery.serialiseQuery());
 
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallback, false);
-
+	
 
 }
 
@@ -161,35 +159,35 @@ function sparqlQueryJson(queryStr, endpoint, callback, isDebug) {
 
 	var querypart = "query=" + escape(queryStr);
 
-	// Get our HTTP request object.
+	//** Get our HTTP request object.
 	var xmlhttp = null;
 
 	if(window.XMLHttpRequest) {
 		xmlhttp = new XMLHttpRequest();
 	} else if(window.ActiveXObject) {
-		// Code for older versions of IE, like IE6 and before.
+		//** Code for older versions of IE, like IE6 and before.
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	} else {
 		alert('Perhaps your browser does not support XMLHttpRequests?');
 }
 
 
-	// Set up a POST with JSON result format.
+	//** Set up a POST with JSON result format.
 	xmlhttp.open('POST', endpoint, true); // GET can have caching probs, so POST
 	xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xmlhttp.setRequestHeader("Accept", "application/sparql-results+json");
 
 
-	// Set up callback to get the response asynchronously.
+	//** Set up callback to get the response asynchronously.
 	xmlhttp.onreadystatechange = function() {
 
 	if(xmlhttp.readyState == 4) {
 		if(xmlhttp.status == 200) {
-			   // Do something with the results
+			   //** Do something with the results
 			   if(isDebug) alert(xmlhttp.responseText);
 				   callback(xmlhttp.responseText);
 			 } else {
-				   // Some kind of error occurred.
+				   //** Some kind of error occurred.
 				   alert("Sparql query error: " + xmlhttp.status + " " + xmlhttp.responseText);
 	 	}
 	}
@@ -203,6 +201,8 @@ xmlhttp.send(querypart);
 
 //** Define a callback function to receive the SPARQL JSON result.
 function myCallback(str) {
+
+	console.log("#DEBUG -> main query executed.");
 
 	//** Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
@@ -273,7 +273,8 @@ function myCallback(str) {
 	loadedMaps = $("#itemsContainer li").size();
 
 	$('#status').text('Karten ' + '('+parseInt(minVal)+'-'+parseInt(maxVal)+')' + ': '+ loadedMaps + ' von ' + totalMaps);
-	console.log('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);
+	
+	console.log('#DEBUG -> Loaded Maps (Update): '+ loadedMaps + ' from ' + totalMaps);
 
 	if(loadedMaps != totalMaps && loadedMaps < totalMaps ){
 
@@ -294,6 +295,9 @@ function myCallback(str) {
 
 
 function myCallbackTemporalConstraint(str) {
+
+
+	console.log("#DEBUG -> temporal limit query executed.");
 
 	// Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
@@ -318,15 +322,16 @@ function myCallbackTemporalConstraint(str) {
 
 function callBackResultsetSize(str) {
 
-	// Convert result to JSON
+	console.log("#DEBUG -> result set size query executed.");
+
+	//** Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
 	
-	totalMaps=jsonObj.results.bindings[0].QT_MAPS.value;
-	
-	//$('#status').append(' from ' + totalMaps);
+	totalMaps=jsonObj.results.bindings[0].QT_MAPS.value;	
+
 	$('#status').text('Karten (' + parseInt(minVal)+'-'+parseInt(maxVal)+'): ' + loadedMaps + ' von ' + totalMaps);
 	$("#status").append('<a onclick="executeQuery('+$("li").size()+')" href="#"> [weiter]</a>'); 
 
-	console.log('Loaded Maps: '+ loadedMaps + ' from ' + totalMaps);
+	console.log('#DEBUG -> Loaded Maps (Query): '+ loadedMaps + ' from ' + totalMaps);
 
 }
