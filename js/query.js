@@ -202,7 +202,7 @@ xmlhttp.send(querypart);
 //** Define a callback function to receive the SPARQL JSON result.
 function myCallback(str) {
 
-	console.log("#DEBUG -> main query executed.");
+	console.log("#DEBUG query.js -> main query executed.");
 
 	//** Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
@@ -274,7 +274,7 @@ function myCallback(str) {
 
 	$('#status').text('Karten ' + '('+parseInt(minVal)+'-'+parseInt(maxVal)+')' + ': '+ loadedMaps + ' von ' + totalMaps);
 	
-	console.log('#DEBUG -> Loaded Maps (Update): '+ loadedMaps + ' from ' + totalMaps);
+	console.log('#DEBUG query.js -> Loaded Maps (Update): '+ loadedMaps + ' from ' + totalMaps);
 
 	if(loadedMaps != totalMaps && loadedMaps < totalMaps ){
 
@@ -297,7 +297,7 @@ function myCallback(str) {
 function myCallbackTemporalConstraint(str) {
 
 
-	console.log("#DEBUG -> temporal limit query executed.");
+	console.log("#DEBUG query.js -> temporal limit query executed.");
 
 	// Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
@@ -310,7 +310,7 @@ function myCallbackTemporalConstraint(str) {
 
 
 		setSliderRange(parseInt(jsonObj.results.bindings[i].mindate.value), parseInt(jsonObj.results.bindings[i].maxdate.value), parseInt(jsonObj.results.bindings[i].mindate.value), parseInt(jsonObj.results.bindings[i].maxdate.value));
-
+		
 	}
 	
 	executeQuery(0);
@@ -322,7 +322,7 @@ function myCallbackTemporalConstraint(str) {
 
 function callBackResultsetSize(str) {
 
-	console.log("#DEBUG -> result set size query executed.");
+	console.log("#DEBUG query.js -> result set size query executed.");
 
 	//** Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
@@ -332,6 +332,6 @@ function callBackResultsetSize(str) {
 	$('#status').text('Karten (' + parseInt(minVal)+'-'+parseInt(maxVal)+'): ' + loadedMaps + ' von ' + totalMaps);
 	$("#status").append('<a onclick="executeQuery('+$("li").size()+')" href="#"> [weiter]</a>'); 
 
-	console.log('#DEBUG -> Loaded Maps (Query): '+ loadedMaps + ' from ' + totalMaps);
+	console.log('#DEBUG query.js -> Loaded Maps (Query): '+ loadedMaps + ' from ' + totalMaps);
 
 }

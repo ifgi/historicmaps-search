@@ -1,16 +1,15 @@
 
-
-
 function setSliderRange(valMin,valMax,ValRangeMin,ValRangeMax) {
 
-	
+	console.log("#DEBUG slider.js -> setSliderRange() executed. ")
 
 	$("#slider").rangeSlider({
 		bounds: {min: ValRangeMin, max: ValRangeMax},
 		defaultValues: {min: valMin, max: valMax},
+    wheelMode: "scroll", wheelSpeed: 30,
 		valueLabels: "change",
 		  scales: [
-  // Primary scale
+  //** Primary scale
   {
     first: function(val){ return val; },
     next: function(val){ return val + 100; },
@@ -20,7 +19,7 @@ function setSliderRange(valMin,valMax,ValRangeMin,ValRangeMax) {
       tickContainer.addClass("myCustomClass");
     }
   },
-  // Secondary scale
+  //** Secondary scale
   {
     first: function(val){ return val; },
     next: function(val){
@@ -32,12 +31,12 @@ function setSliderRange(valMin,valMax,ValRangeMin,ValRangeMax) {
     stop: function(val){ return false; },
     label: function(){ return null; }
   }]
-
-		  
+	
 
 	});
 
-
+  $("#slider").rangeSlider("values", valMin, valMax);  
+  
 	
 }
 

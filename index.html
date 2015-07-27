@@ -24,7 +24,7 @@
 
 <script src="js/jQRangeSlider/lib/jquery.mousewheel.min.js"></script>
 <script src="js/jQRangeSlider/jQRangeSlider-min.js"></script>
-<script src="js/jQRangeSlider/jQDateRangeSlider-min.js"></script>
+<!--<script src="js/jQRangeSlider/jQDateRangeSlider-min.js"></script>-->
 <script src="js/jQRangeSlider/jQAllRangeSliders-withRuler-min.js"></script>
 <link rel="stylesheet" id="themeCSS" href="js/jQRangeSlider/css/iThing.css">
 
@@ -134,12 +134,6 @@
 	</div>
 
 
-
-<!--  <div id="constraintsOverview"><p>Date Range:</p></div> -->
-
-
-
-
 <script type="text/javascript">
 
 $('#resetview').on('click', function(){
@@ -215,7 +209,7 @@ $('#bbox').on('click', function(){
 $( document ).ready(function() {
 
 	setTemporalLimit();
-
+  
 	//** Loading RDF properties from file. (Done with a local file to avoid CORS issues)
 	$.get("rdf/historicmapsphen.rdf", function(xmlResponse){
 		var rdfClasses = getRdfClasses(xmlResponse);
@@ -234,9 +228,6 @@ $( document ).ready(function() {
 	
   //** Hiding predicates list.
   $('#properties').css("display", "none");	
-
-
-
 
 });
 
@@ -267,7 +258,9 @@ $("#slider").bind("valuesChanged", function(e, data){
 
 
 $( window ).load(function() {
-	console.log( "Debug Mode: Window Loaded" );
+
+	console.log( "#DEBUG gui.js -> Window Loaded" );
+
 });
 
 //** Firing the search button once ENTER is pressed on the search text field.
@@ -289,11 +282,10 @@ function resetSearch(){
     LMap.setView([40, 5], 3);
 
     //** Reset slider    
-   
     var bounds = $("#slider").rangeSlider("option", "bounds");
-    $("#slider").rangeSlider({range: {min: bounds.min, max: bounds.max}, enabled: true});
     setSliderRange(bounds.min, bounds.max, bounds.min, bounds.max);
-
+    
+    
     //** Remove all thematic constraints
     $('#properties').find('input[type=checkbox]:checked').removeAttr('checked');
     arrayCheckboxes = [];
