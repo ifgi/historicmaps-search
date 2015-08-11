@@ -7,7 +7,7 @@ function init() {
 
     L.mapbox.accessToken = 'pk.eyJ1Ijoiamltam9uZXMiLCJhIjoib2R0ZUVmTSJ9.9fXpF8LWx9bm2WSW6hg4PQ';	
 
-	LMap = L.mapbox.map('map', 'examples.map-i86nkdio', {attributionControl: true}).setView([40, 5], 3);
+	LMap = L.mapbox.map('map', 'mapbox.streets', {attributionControl: true}).setView([40, 5], 3);
 	mapsGroup = new L.featureGroup();
 	mapsGroup.addTo(LMap);
 	 
