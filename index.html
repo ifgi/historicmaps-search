@@ -47,54 +47,54 @@
 
 <html>
 <head>
-	<title>Historic Maps Search</title>	
+	<title>Historic Maps Search</title>
 </head>
 <body onLoad="javascript:init();">
 
 	<div id ="main">
-		
-		<div id="header">			
+
+		<div id="header">
 			<div id="logox"><img src="http://sammlungen.ulb.uni-muenster.de/domainimage/wwu_logo.gif"><br>
-      <span>Portal Historischer Karten</span></div>
-			
+      <span>Karten Portal</span></div>
+
 			<div id="search">
-        
-        
+
+
           <input type="text" size="50 "id="searchField" class="form-control" placeholder="Detailsuche...">
   				<input id="searchButton" class="btn btn-default dropdown-toggle" type="button" name="btnSearch" value="Suchen"  onclick="executeQuery(0)">
           <br>
-					
-				  <div id="slider"></div>	
+
+				  <div id="slider"></div>
 
 
 			</div>
-	    
+
       <div id="logoy">
-            
+
 
             <a target="_blank" href="https://github.com/ifgi/historicmaps-search" title="Source Code" style="padding-right:15px" ><img src="img/github.png" width="30px" height="30px"></a>
             <a target="_blank" href="http://www.uni-muenster.de/Geoinformatics/research/projects/lodum.html" title="Linked Open Data University of M&#252;nster"><img src="img/rdf.png" width="28px" height="30px"></a>
             <a target="_blank" href="http://ulb.uni-muenster.de/" title="Universit&#228;ts- und Landesbibliothek M&#252;nster"><img src="img/ulb.png" width="30px" height="30px"></a>
             <a target="_blank" href="http://ifgi.uni-muenster.de" title="Institut f&#252;r Geoinformatik"><img src="img/ifgi.png" width="25px" height="30px"></a>
-            
+
       </div>
 
 		</div>
 
 <div id="github"></div>
-    
+
     <div id="toolbar">
-      
+
         <div id="mapheader">.</div>
         <div id="status">
-          
+
         </div>
-        
+
     </div>
-    
-		
+
+
     <div id="display">
-				
+
 			<div id="properties">
 
 				<b><br></b><button id="btnProperties" onclick="executeQuery(0)" class="btn btn-default dropdown-toggle">Set Properties</button><br><br><br>
@@ -102,31 +102,31 @@
 			</div>
 
 			<div id="map">
-       
+
         <div id="zoom" class="custom-buttons">
-          <a href='#' class='active' ><img id="imgZoom" value="on" title ="Disable automatic zoom to map area" src="img/unlocked.png"></a>          
+          <a href='#' class='active' ><img id="imgZoom" value="off" title ="Disable automatic zoom to map area" src="img/locked.png"></a>
         </div>
-        
+
         <div id="predicates" class="custom-buttons">
-          <a href='#' value="on" class='active' ><img id="imgPredicates" value="off" title ="Show RDF properties list" src="img/predicates.png"></a>          
+          <a href='#' value="on" class='active' ><img id="imgPredicates" value="off" title ="Show RDF properties list" src="img/predicates.png"></a>
         </div>
 
         <div id="bbox" class="custom-buttons">
-          <a href='#' value="on" class='active' ><img id="imgBBOX" value="off" title ="Apply spatial filter to current map view" src="img/bbox.png"></a>          
+          <a href='#' value="on" class='active' ><img id="imgBBOX" value="off" title ="Apply spatial filter to current map view" src="img/bbox.png"></a>
         </div>
 
         <div id="resetview" class="custom-buttons">
-          <a href='#' value="on" class='active' ><img id="imgReset" value="off" title ="Remove all filters" src="img/reset.png"></a>          
+          <a href='#' value="on" class='active' ><img id="imgReset" value="off" title ="Remove all filters" src="img/reset.png"></a>
         </div>
 
 			</div>
 
 
 			<div id="listContainer" >
-				
+
 				<div id="result" ></div>
 				<div id="next"></div>
-			</div>	
+			</div>
 
 
 		</div>
@@ -146,7 +146,7 @@ $('#resetview').on('click', function(){
 $('#zoom').on('click', function(){
 
   if($("#imgZoom").attr("value")=="on") {
-    
+
     $("#imgZoom").attr("src", "img/locked.png");
     $("#imgZoom").attr("title", "Enable automatic zoom to map area");
     $("#imgZoom").attr("value", "off");
@@ -163,42 +163,42 @@ $('#zoom').on('click', function(){
 
 
 $('#predicates').on('click', function(){
-  
+
     if($("#imgPredicates").attr("value")=="off") {
 
       $("#imgPredicates").attr('value', 'on');
       $("#properties").toggle("slow");
-      $('#map').css("width", "63%");  
+      $('#map').css("width", "63%");
       $("#imgPredicates").attr("title","Hide RDF properties list");
 
 
     } else {
 
       $("#imgPredicates").attr('value', 'off');
-      $('#map').css("width", "75%");  
+      $('#map').css("width", "75%");
       $("#properties").toggle("slow");
       $("#imgPredicates").attr("title","Show RDF properties list");
     }
-    
+
 });
 
 
 $('#bbox').on('click', function(){
-    
+
     if($("#imgBBOX").attr("value")=="on") {
 
       $("#imgBBOX").attr("src", "img/bbox.png");
       $("#imgBBOX").attr('value', 'off');
       $("#imgBBOX").attr("title",'Apply spatial filter to current map view');
 
-      removeSpatiatConstraint();    
+      removeSpatiatConstraint();
 
     } else {
 
       $("#imgBBOX").attr("src", "img/globe.png");
       $("#imgBBOX").attr('value', 'on');
       $("#imgBBOX").attr("title",'Remove spatial filter');
-      
+
       setSpatiatConstraint();
 
     }
@@ -209,7 +209,7 @@ $('#bbox').on('click', function(){
 $( document ).ready(function() {
 
 	setTemporalLimit();
-  
+
 	//** Loading RDF properties from file. (Done with a local file to avoid CORS issues)
 	$.get("rdf/historicmapsphen.rdf", function(xmlResponse){
 		var rdfClasses = getRdfClasses(xmlResponse);
@@ -217,7 +217,7 @@ $( document ).ready(function() {
 
 		for(var i = 0; i < rdfClasses.length; i++){
 			if(rdfClasses[i].children.length == 0){
-				$("#properties").append("<p id='pOntologyContentTag" + counter +"'><input type='checkbox' id='" + rdfClasses[i].name + "' value='" + rdfClasses[i].uri + "'><label for 'pOntologyContentTag"+counter+"'>" + rdfClasses[i].name + '</label>' );				
+				$("#properties").append("<p id='pOntologyContentTag" + counter +"'><input type='checkbox' id='" + rdfClasses[i].name + "' value='" + rdfClasses[i].uri + "'><label for 'pOntologyContentTag"+counter+"'>" + rdfClasses[i].name + '</label>' );
 				counter++;
 			}
 		}
@@ -225,9 +225,9 @@ $( document ).ready(function() {
 
 	//**Creating list for query results.
 	$("#result").append('<ul id="itemsContainer" style="list-style-type:none"></ul>');
-	
+
   //** Hiding predicates list.
-  $('#properties').css("display", "none");	
+  $('#properties').css("display", "none");
 
 });
 
@@ -281,11 +281,11 @@ function resetSearch(){
     //** Reset map view
     LMap.setView([40, 5], 3);
 
-    //** Reset slider    
+    //** Reset slider
     var bounds = $("#slider").rangeSlider("option", "bounds");
     setSliderRange(bounds.min, bounds.max, bounds.min, bounds.max);
-    
-    
+
+
     //** Remove all thematic constraints
     $('#properties').find('input[type=checkbox]:checked').removeAttr('checked');
     arrayCheckboxes = [];
@@ -293,8 +293,8 @@ function resetSearch(){
     //** Removes map area geometry or spatial constraint (if applicable)
     mapsGroup.clearLayers();
     removeSpatiatConstraint();
-    
-        
+
+
     //executeQuery(0);
 
 }
@@ -304,4 +304,3 @@ function resetSearch(){
 
 </body>
 </html>
-
