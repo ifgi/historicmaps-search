@@ -12,7 +12,7 @@ var loadedMaps=0;
 var totalMaps=0;
 var wktBBOX="";
 
-//var resultsetLimt;	
+//var resultsetLimt;
 
 function getResultSetSize(){
 
@@ -27,21 +27,21 @@ function getResultSetSize(){
 			  .graph("?graph")
 			  	.where("?map","a","maps:Map")
 			  	.where("?map","maps:digitalImageVersion","?picture")
-			  	.where("?map","maps:title","?title")			  
-			  	.where("?map","maps:presentation","?presentation")		
+			  	.where("?map","maps:title","?title")
+			  	.where("?map","maps:presentation","?presentation")
 			  	.where("?map","maps:hasScale","?scale")
 			  	.where("?map","maps:mapsArea","?area")
 			  	.where("?map","maps:mapsTime","?time")
 			  	.where("?time","xsd:gYear","?year")
 			  	.where("?area","geo:asWKT","?wkt")
-			  	.optional().where("?map","dct:description","?description").end()					
+			  	.optional().where("?map","dct:description","?description").end()
 			  .end()
 			  .orderby("?year").distinct();
 
 	for(var i = 0; i<  arrayCheckboxes.length; i++) {
-		
-		sparqlQuery.where("?map","maps:mapsPhenomenon","?phenomenon"+i);			
-		sparqlQuery.where("?phenomenon"+i,"a","<"+ arrayCheckboxes[i]+">");	
+
+		sparqlQuery.where("?map","maps:mapsPhenomenon","?phenomenon"+i);
+		sparqlQuery.where("?phenomenon"+i,"a","<"+ arrayCheckboxes[i]+">");
 
 	}
 
@@ -60,13 +60,13 @@ function getResultSetSize(){
 
 	sparqlQuery.filter("xsd:integer(?year) >= " + minVal + " && xsd:integer(?year) <= " + maxVal);
 
-	console.log("SPARQL Resultset Size -> "+sparqlQuery.serialiseQuery());	
+	console.log("SPARQL Resultset Size -> "+sparqlQuery.serialiseQuery());
 
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, callBackResultsetSize, false);
 
 }
 
-function setTemporalLimit(){	
+function setTemporalLimit(){
 
 	var sparqlQuery = $.sparql("http://data.uni-muenster.de/historicmaps/sparql")
 			  .prefix("maps","http://www.geographicknowledge.de/vocab/maps#")
@@ -77,7 +77,7 @@ function setTemporalLimit(){
 				  	.where("?map","a","maps:Map")
 				  	.where("?map","maps:digitalImageVersion","?picture")
 				  	.where("?map","maps:title","?title")
-				  	.where("?map","maps:presentation","?presentation")	
+				  	.where("?map","maps:presentation","?presentation")
 				  	.where("?map","maps:hasScale","?scale")
 				  	.where("?map","maps:mapsArea","?area")
 				  	.where("?map","maps:mapsTime","?time")
@@ -87,12 +87,14 @@ function setTemporalLimit(){
 			  .orderby("?year").distinct();
 
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallbackTemporalConstraint, false);
-	
+
 }
 
 //** Main Query
 
-function executeQuery(queryOffset) {     
+function executeQuery(offset) {
+
+ 	queryOffset = offset
 
 	if (queryOffset==null || queryOffset==0){
 
@@ -112,13 +114,13 @@ function executeQuery(queryOffset) {
 				  	.where("?map","a","maps:Map")
 				  	.where("?map","maps:digitalImageVersion","?picture")
 				  	.where("?map","maps:title","?title")
-				  	.where("?map","maps:presentation","?presentation")			  	
+				  	.where("?map","maps:presentation","?presentation")
 				  	.where("?map","maps:hasScale","?scale")
 				  	.where("?map","maps:mapsArea","?area")
 				  	.where("?map","maps:mapsTime","?time")
 				  	.where("?time","xsd:gYear","?year")
 				  	.where("?area","geo:asWKT","?wkt")
-					.optional().where("?map","dct:description","?description").end()					
+					.optional().where("?map","dct:description","?description").end()
 			  	.end()
 			  		.orderby("?year").distinct()
 
@@ -126,9 +128,9 @@ function executeQuery(queryOffset) {
 			  .offset(queryOffset);
 
 	for(var i = 0; i<  arrayCheckboxes.length; i++) {
-		
-		sparqlQuery.where("?map","maps:mapsPhenomenon","?phenomenon"+i);			
-		sparqlQuery.where("?phenomenon"+i,"a","<"+ arrayCheckboxes[i]+">");	
+
+		sparqlQuery.where("?map","maps:mapsPhenomenon","?phenomenon"+i);
+		sparqlQuery.where("?phenomenon"+i,"a","<"+ arrayCheckboxes[i]+">");
 
 	}
 
@@ -143,15 +145,15 @@ function executeQuery(queryOffset) {
 	//** Applying spatial filter
 	if(wktBBOX != ""){
 		sparqlQuery.filter("geof:sfWithin(?wkt,'"+wktBBOX+"'^^sf:wktLiteral)");
-	}	
+	}
 
-		
+
 	sparqlQuery.filter("xsd:integer(?year) >= " + minVal + " && xsd:integer(?year) <= " + maxVal);
-	
+
 	console.log("SPARQL -> "+sparqlQuery.serialiseQuery());
 
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallback, false);
-	
+
 
 }
 
@@ -206,17 +208,17 @@ function myCallback(str) {
 
 	//** Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
-	
-	console.log(jsonObj);		
 
-	if (queryOffset == 0){ 
+	console.log(jsonObj);
 
-		$("#result").html(""); 
+	if (queryOffset == 0){
+
+		$("#result").html("");
 		$("#result").append('<ul id="itemsContainer" style="list-style-type:none"></ul>');
 
 	}
 
-	
+
 	for(var i = 0; i<  jsonObj.results.bindings.length; i++) {
 
 		//** Creates list item.
@@ -262,30 +264,30 @@ function myCallback(str) {
 
 
 			$("#result ul").append('<li onmousemove=plotGeometry("'+escape(wkt)+'");><a target="_blank" href=' + picture +'><img src="' +
-			picture + '" alt="'+ title +'" width="90" height="90" ></a><p><a target="_blank" href=' + presentation +'>' + title + '</a><br>' + 
+			picture + '" alt="'+ title +'" width="90" height="90" ></a><p><a target="_blank" href=' + presentation +'>' + title + '</a><br>' +
 			scale + '<br>' + year + '</p><p>'+ description +'</p></li>');
-			
+
 	}
-	  
-	
+
+
 	}
 
 	loadedMaps = $("#itemsContainer li").size();
 
 	$('#status').text('Karten ' + '('+parseInt(minVal)+'-'+parseInt(maxVal)+')' + ': '+ loadedMaps + ' von ' + totalMaps);
-	
+
 	console.log('#DEBUG query.js -> Loaded Maps (Update): '+ loadedMaps + ' from ' + totalMaps);
 
 	if(loadedMaps != totalMaps && loadedMaps < totalMaps ){
 
 		if(loadedMaps != 0){
 
-			$("#status").append('<a onclick="executeQuery('+$("#itemsContainer li").size()+')" href="#"> [weiter]</a>'); 
+			$("#status").append(' <a onclick="executeQuery('+$("#itemsContainer li").size()+')" href="#">[weiter]</a>');
 
 		}
 
-	} 
-	
+	}
+
 }
 
 
@@ -301,18 +303,18 @@ function myCallbackTemporalConstraint(str) {
 
 	// Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
-	
-	
+
+
 	for(var i = 0; i<  jsonObj.results.bindings.length; i++) {
-		
+
 		minVal = parseInt(jsonObj.results.bindings[i].mindate.value);
 		maxVal = parseInt(jsonObj.results.bindings[i].maxdate.value);
 
 
 		setSliderRange(parseInt(jsonObj.results.bindings[i].mindate.value), parseInt(jsonObj.results.bindings[i].maxdate.value), parseInt(jsonObj.results.bindings[i].mindate.value), parseInt(jsonObj.results.bindings[i].maxdate.value));
-		
+
 	}
-	
+
 	executeQuery(0);
 
 }
@@ -326,11 +328,11 @@ function callBackResultsetSize(str) {
 
 	//** Convert result to JSON
 	var jsonObj = eval('(' + str + ')');
-	
-	totalMaps=jsonObj.results.bindings[0].QT_MAPS.value;	
+
+	totalMaps=jsonObj.results.bindings[0].QT_MAPS.value;
 
 	$('#status').text('Karten (' + parseInt(minVal)+'-'+parseInt(maxVal)+'): ' + loadedMaps + ' von ' + totalMaps);
-	$("#status").append('<a onclick="executeQuery('+$("li").size()+')" href="#"> [weiter]</a>'); 
+	$("#status").append(' <a onclick="executeQuery('+$("li").size()+')" href="#">[weiter]</a>');
 
 	console.log('#DEBUG query.js -> Loaded Maps (Query): '+ loadedMaps + ' from ' + totalMaps);
 
