@@ -40,8 +40,8 @@ function getResultSetSize(){
 
 	for(var i = 0; i<  arrayCheckboxes.length; i++) {
 
-		sparqlQuery.where("?map","maps:mapsPhenomenon","?phenomenon"+i);
-		sparqlQuery.where("?phenomenon"+i,"a","<"+ arrayCheckboxes[i]+">");
+		sparqlQuery.graph("?graph").where("?map","maps:mapsPhenomenon","?phenomenon"+i);
+		sparqlQuery.graph("?graph").where("?phenomenon"+i,"a","<"+ arrayCheckboxes[i]+">");
 
 	}
 
@@ -120,6 +120,8 @@ function executeQuery(offset) {
 				  	.where("?map","maps:mapsTime","?time")
 				  	.where("?time","xsd:gYear","?year")
 				  	.where("?area","geo:asWKT","?wkt")
+
+
 					.optional().where("?map","dct:description","?description").end()
 			  	.end()
 			  		.orderby("?year").distinct()
@@ -129,10 +131,12 @@ function executeQuery(offset) {
 
 	for(var i = 0; i<  arrayCheckboxes.length; i++) {
 
-		sparqlQuery.where("?map","maps:mapsPhenomenon","?phenomenon"+i);
-		sparqlQuery.where("?phenomenon"+i,"a","<"+ arrayCheckboxes[i]+">");
+		sparqlQuery.graph("?graph").where("?map","maps:mapsPhenomenon","?phenomenon"+i);
+		sparqlQuery.graph("?graph").where("?phenomenon"+i,"a","<"+ arrayCheckboxes[i]+">");
 
 	}
+
+	//sparqlQuery.optional().where("?map","dct:description","?description").end();
 
 	//** Deactivated due tests using Parliament (No full text search available)
 	//** sparqlQuery.where("?string","luc:mapsLiteralIndex",'"*'+document.getElementById("searchField").value+'*~0.9 "');
