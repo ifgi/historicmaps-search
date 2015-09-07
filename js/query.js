@@ -1,9 +1,9 @@
 
 
 var endpoint = "http://data.uni-muenster.de/oldmaps/sparql";
-
 endpoint = "http://recife:8020/parliament/sparql";
 endpoint = "http://giv-lodum.uni-muenster.de:8081/parliament/sparql";
+//endpoint = "http://linkeddata.uni-muenster.de:8080/parliament/sparql";
 
 var arrayCheckboxes = [];
 var maxVal=0;
@@ -62,7 +62,7 @@ function getResultSetSize(){
 
 	console.log("SPARQL Resultset Size -> "+sparqlQuery.serialiseQuery());
 
-	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, callBackResultsetSize, false);
+	sparqlQueryJson(encode_utf8(sparqlQuery.serialiseQuery()), endpoint, callBackResultsetSize, false);
 
 }
 
@@ -154,12 +154,39 @@ function executeQuery(offset) {
 
 	sparqlQuery.filter("xsd:integer(?year) >= " + minVal + " && xsd:integer(?year) <= " + maxVal);
 
-	console.log("SPARQL -> "+sparqlQuery.serialiseQuery());
 
-	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallback, false);
+	console.log("SPARQL Encoded -> "+ sparqlQuery.serialiseQuery());
+
+
+	sparqlQueryJson(encode_utf8(sparqlQuery.serialiseQuery()), endpoint, myCallback, false);
 
 
 }
+
+
+        function encode_utf8(rohtext) {
+             // dient der Normalisierung des Zeilenumbruchs
+             rohtext = rohtext.replace(/\r\n/g,"\n");
+             var utftext = "";
+             for(var n=0; n<rohtext.length; n++)
+                 {
+                 // ermitteln des Unicodes des  aktuellen Zeichens
+                 var c=rohtext.charCodeAt(n);
+                 // alle Zeichen von 0-127 => 1byte
+                 if (c<128)
+                     utftext += String.fromCharCode(c);
+                 // alle Zeichen von 127 bis 2047 => 2byte
+                 else if((c>127) && (c<2048)) {
+                     utftext += String.fromCharCode((c>>6)|192);
+                     utftext += String.fromCharCode((c&63)|128);}
+                 // alle Zeichen von 2048 bis 66536 => 3byte
+                 else {
+                     utftext += String.fromCharCode((c>>12)|224);
+                     utftext += String.fromCharCode(((c>>6)&63)|128);
+                     utftext += String.fromCharCode((c&63)|128);}
+                 }
+             return utftext;
+         }
 
 function sparqlQueryJson(queryStr, endpoint, callback, isDebug) {
 
