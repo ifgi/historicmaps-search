@@ -1,9 +1,9 @@
 
 
-var endpoint = "http://data.uni-muenster.de/oldmaps/sparql";
-endpoint = "http://recife:8020/parliament/sparql";
-endpoint = "http://giv-lodum.uni-muenster.de:8081/parliament/sparql";
-//endpoint = "http://linkeddata.uni-muenster.de:8080/parliament/sparql";
+var endpoint = "http://giv-lodum.uni-muenster.de:8081/parliament/sparql";
+endpoint = "http://linkeddata.uni-muenster.de:8081/parliament/sparql";
+
+namedGraph = "<http://ulb.uni-muenster.de/context/karten/goettingen>";
 
 var arrayCheckboxes = [];
 var maxVal=0;
@@ -24,7 +24,7 @@ function getResultSetSize(){
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
 			  .select(["(COUNT(distinct ?map) as ?QT_MAPS)"])
-			  .graph("?graph")
+			  .graph(namedGraph)
 			  	.where("?map","a","maps:Map")
 			  	.where("?map","maps:digitalImageVersion","?picture")
 			  	.where("?map","maps:title","?title")
@@ -73,7 +73,7 @@ function setTemporalLimit(){
 			  .prefix("geo","http://www.opengis.net/ont/geosparql/1.0#")
 			  .prefix("xsd","http://www.w3.org/2001/XMLSchema#")
 			  .select(["(min(?year) as ?mindate)","(max(?year) as ?maxdate)"])
-				  .graph("?graph")
+				  .graph(namedGraph)
 				  	.where("?map","a","maps:Map")
 				  	.where("?map","maps:digitalImageVersion","?picture")
 				  	.where("?map","maps:title","?title")
@@ -110,7 +110,7 @@ function executeQuery(offset) {
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
 			  .select(["?map", "?title", "?scale", "?wkt", "?picture", "?year", "?description", "?presentation"])
-			  	.graph("?graph")
+			  	.graph(namedGraph)
 				  	.where("?map","a","maps:Map")
 				  	.where("?map","maps:digitalImageVersion","?picture")
 				  	.where("?map","maps:title","?title")
@@ -164,29 +164,29 @@ function executeQuery(offset) {
 }
 
 
-        function encode_utf8(rohtext) {
-             // dient der Normalisierung des Zeilenumbruchs
-             rohtext = rohtext.replace(/\r\n/g,"\n");
-             var utftext = "";
-             for(var n=0; n<rohtext.length; n++)
-                 {
-                 // ermitteln des Unicodes des  aktuellen Zeichens
-                 var c=rohtext.charCodeAt(n);
-                 // alle Zeichen von 0-127 => 1byte
-                 if (c<128)
-                     utftext += String.fromCharCode(c);
-                 // alle Zeichen von 127 bis 2047 => 2byte
-                 else if((c>127) && (c<2048)) {
-                     utftext += String.fromCharCode((c>>6)|192);
-                     utftext += String.fromCharCode((c&63)|128);}
-                 // alle Zeichen von 2048 bis 66536 => 3byte
-                 else {
-                     utftext += String.fromCharCode((c>>12)|224);
-                     utftext += String.fromCharCode(((c>>6)&63)|128);
-                     utftext += String.fromCharCode((c&63)|128);}
-                 }
-             return utftext;
+function encode_utf8(rohtext) {
+     // dient der Normalisierung des Zeilenumbruchs
+     rohtext = rohtext.replace(/\r\n/g,"\n");
+     var utftext = "";
+     for(var n=0; n<rohtext.length; n++)
+         {
+         // ermitteln des Unicodes des  aktuellen Zeichens
+         var c=rohtext.charCodeAt(n);
+         // alle Zeichen von 0-127 => 1byte
+         if (c<128)
+             utftext += String.fromCharCode(c);
+         // alle Zeichen von 127 bis 2047 => 2byte
+         else if((c>127) && (c<2048)) {
+             utftext += String.fromCharCode((c>>6)|192);
+             utftext += String.fromCharCode((c&63)|128);}
+         // alle Zeichen von 2048 bis 66536 => 3byte
+         else {
+             utftext += String.fromCharCode((c>>12)|224);
+             utftext += String.fromCharCode(((c>>6)&63)|128);
+             utftext += String.fromCharCode((c&63)|128);}
          }
+     return utftext;
+ }
 
 function sparqlQueryJson(queryStr, endpoint, callback, isDebug) {
 
