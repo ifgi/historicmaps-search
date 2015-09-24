@@ -3,7 +3,7 @@
 var endpoint = "http://giv-lodum.uni-muenster.de:8081/parliament/sparql";
 endpoint = "http://linkeddata.uni-muenster.de:8081/parliament/sparql";
 
-namedGraph = "<http://ulb.uni-muenster.de/context/karten/goettingen>";
+namedGraph = "<http://ulb.uni-muenster.de/context/karten/"+getQueryVariable("source")+">";
 
 var arrayCheckboxes = [];
 var maxVal=0;
@@ -163,6 +163,18 @@ function executeQuery(offset) {
 
 }
 
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if (pair[0] == variable) {
+      return pair[1];
+    }
+  }
+  alert('Query Variable ' + variable + ' not found');
+}
+
 
 function encode_utf8(rohtext) {
      // dient der Normalisierung des Zeilenumbruchs
@@ -295,7 +307,7 @@ function myCallback(str) {
 
 
 			$("#result ul").append('<li onmousemove=plotGeometry("'+escape(wkt)+'");><a target="_blank" href=' + picture +'><img src="' +
-			picture + '" alt="'+ title +'" width="90" height="90" ></a><p><a target="_blank" href=' + presentation +'>' + title + '</a><br>' +
+			picture.replace("/0/","/300/").replace("/6000/","/300/") + '" alt="'+ title +'" width="90" height="90" ></a><p><a target="_blank" href=' + presentation +'>' + title + '</a><br>' +
 			scale + '<br>' + year + '</p><p>'+ description +'</p></li>');
 
 	}
