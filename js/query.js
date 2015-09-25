@@ -34,6 +34,7 @@ function getResultSetSize(){
 			  	.where("?map","maps:mapsTime","?time")
 			  	.where("?time","xsd:gYear","?year")
 			  	.where("?area","geo:asWKT","?wkt")
+					.optional().where("?map","maps:mapSize","?size").end()
 			  	.optional().where("?map","dct:description","?description").end()
 			  .end()
 			  .orderby("?year").distinct();
@@ -109,7 +110,7 @@ function executeQuery(offset) {
 			  .prefix("dct","http://purl.org/dc/terms/")
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
-			  .select(["?map", "?title", "?scale", "?wkt", "?picture", "?year", "?description", "?presentation"])
+			  .select(["?map", "?title", "?scale", "?wkt", "?picture", "?year", "?description", "?presentation", "?size"])
 			  	.graph(namedGraph)
 				  	.where("?map","a","maps:Map")
 				  	.where("?map","maps:digitalImageVersion","?picture")
@@ -121,7 +122,7 @@ function executeQuery(offset) {
 				  	.where("?time","xsd:gYear","?year")
 				  	.where("?area","geo:asWKT","?wkt")
 
-
+						.optional().where("?map","maps:mapSize","?size").end()
 					.optional().where("?map","dct:description","?description").end()
 			  	.end()
 			  		.orderby("?year").distinct()
@@ -276,6 +277,7 @@ function myCallback(str) {
 			var scale = '';
 			var year = '';
 			var presentation = '';
+			var size = '';
 
 			if (typeof jsonObj.results.bindings[i].description !== 'undefined') {
 				description = jsonObj.results.bindings[i].description.value;
@@ -305,10 +307,14 @@ function myCallback(str) {
 				year = jsonObj.results.bindings[i].year.value;
 			}
 
+			if (typeof jsonObj.results.bindings[i].size !== 'undefined') {
+				size = jsonObj.results.bindings[i].size.value;
+			}
+
 
 			$("#result ul").append('<li onmousemove=plotGeometry("'+escape(wkt)+'");><a target="_blank" href=' + picture +'><img src="' +
-			picture.replace("/0/","/300/").replace("/6000/","/300/") + '" alt="'+ title +'" width="90" height="90" ></a><p><a target="_blank" href=' + presentation +'>' + title + '</a><br>' +
-			scale + '<br>' + year + '</p><p>'+ description +'</p></li>');
+			picture.replace("/0/","/300/").replace("/6000/","/300/") + '" alt="'+ title +'" width="90" height="90" ></a><p><a target="_blank" href=' + presentation +'>' + title + '</a><br><br>Scale: ' +
+			scale + '<br>Year: ' + year + '<br> Size: ' + size +'</p><p>'+ description +'</p></li>');
 
 	}
 
