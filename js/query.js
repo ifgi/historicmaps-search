@@ -16,6 +16,7 @@ var wktBBOX="";
 
 function getResultSetSize(){
 
+	showSpin();
 	var sparqlQuery = $.sparql("http://data.uni-muenster.de/historicmaps/sparql")
 			  .prefix("maps","http://www.geographicknowledge.de/vocab/maps#")
 			  .prefix("geo","http://www.opengis.net/ont/geosparql/1.0#")
@@ -69,6 +70,8 @@ function getResultSetSize(){
 
 function setTemporalLimit(){
 
+	showSpin();
+
 	var sparqlQuery = $.sparql("http://data.uni-muenster.de/historicmaps/sparql")
 			  .prefix("maps","http://www.geographicknowledge.de/vocab/maps#")
 			  .prefix("geo","http://www.opengis.net/ont/geosparql/1.0#")
@@ -94,6 +97,8 @@ function setTemporalLimit(){
 //** Main Query
 
 function executeQuery(offset) {
+
+	showSpin();
 
  	queryOffset = offset
 
@@ -159,8 +164,11 @@ function executeQuery(offset) {
 	console.log("SPARQL Encoded -> "+ sparqlQuery.serialiseQuery());
 
 
+	console.log("Sending SPARQL...");
 	sparqlQueryJson(encode_utf8(sparqlQuery.serialiseQuery()), endpoint, myCallback, false);
 
+console.log("SPARQL executed");
+	//target.removeChild(spinner.el);
 
 }
 
