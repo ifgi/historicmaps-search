@@ -11,8 +11,11 @@ var minVal=0;
 var loadedMaps=0;
 var totalMaps=0;
 var wktBBOX="";
+var target;
+var spinner;
 
 //var resultsetLimt;
+
 
 function getResultSetSize(){
 
@@ -328,6 +331,8 @@ function myCallback(str) {
 
 
 	}
+
+	hideSpin();
 
 	loadedMaps = $("#itemsContainer li").size();
 

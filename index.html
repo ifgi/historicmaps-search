@@ -160,13 +160,19 @@ var opts = {
 
 function showSpin(){
 
-	var target = document.getElementById('result');
-	var spinner = new Spinner(opts).spin(target);
+	target = document.getElementById('result');
+	spinner = new Spinner(opts).spin(target);
 
-	//var spinner = new Spinner().spin();
 	target.appendChild(spinner.el);
 
 }
+
+function hideSpin(){
+
+	spinner.stop();
+
+}
+
 
 $('#resetview').on('click', function(){
 
@@ -240,7 +246,7 @@ $('#bbox').on('click', function(){
 
 $( document ).ready(function() {
 
-	
+
 	setTemporalLimit();
 
 	//** Loading RDF properties from file. (Done with a local file to avoid CORS issues)
