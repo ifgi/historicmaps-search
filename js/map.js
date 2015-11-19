@@ -5,7 +5,7 @@ var mapsGroup;
 function init() {
 
 
-    L.mapbox.accessToken = 'pk.eyJ1Ijoiamltam9uZXMiLCJhIjoib2R0ZUVmTSJ9.9fXpF8LWx9bm2WSW6hg4PQ';
+  L.mapbox.accessToken = 'pk.eyJ1Ijoiamltam9uZXMiLCJhIjoib2R0ZUVmTSJ9.9fXpF8LWx9bm2WSW6hg4PQ';
 
 	LMap = L.mapbox.map('map', 'mapbox.streets', {attributionControl: true}).setView([40, 5], 3);
 	mapsGroup = new L.featureGroup();
@@ -88,7 +88,7 @@ function removeSpatiatConstraint(){
 	featureGroup.clearLayers();
 
 	//** Removing spatial constraint from the result panel.
-	executeQuery(0);
+	executeQuery();
 
 }
 

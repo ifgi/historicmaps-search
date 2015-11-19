@@ -27,7 +27,7 @@ function getResultSetSize(){
 			  .prefix("dct","http://purl.org/dc/terms/")
 			  .prefix("geof","http://www.opengis.net/def/function/geosparql/")
 			  .prefix("sf","http://www.opengis.net/ont/sf#")
-			  .select(["(COUNT(distinct ?map) as ?QT_MAPS)"])
+			  .select(["(COUNT(?map) as ?QT_MAPS)"])
 			  .graph(namedGraph)
 			  	.where("?map","a","maps:Map")
 			  	.where("?map","maps:digitalImageVersion","?picture")
@@ -40,8 +40,8 @@ function getResultSetSize(){
 			  	.where("?area","geo:asWKT","?wkt")
 					.optional().where("?map","maps:mapSize","?size").end()
 			  	.optional().where("?map","dct:description","?description").end()
-			  .end()
-			  .orderby("?year").distinct();
+			  .end().distinct();
+			  //.orderby("?year").distinct();
 
 	for(var i = 0; i<  arrayCheckboxes.length; i++) {
 
@@ -90,8 +90,8 @@ function setTemporalLimit(){
 				  	.where("?map","maps:mapsTime","?time")
 				  	.where("?time","xsd:gYear","?year")
 				  	.where("?area","geo:asWKT","?wkt")
-				  .end()
-			  .orderby("?year").distinct();
+				  .end();
+			  //.orderby("?year").distinct();
 
 	sparqlQueryJson(sparqlQuery.serialiseQuery(), endpoint, myCallbackTemporalConstraint, false);
 
@@ -105,9 +105,19 @@ function executeQuery(offset) {
 
  	queryOffset = offset
 
-	if (queryOffset==null || queryOffset==0){
+
+	if (offset==null){
+
+		totalMaps = 85000;
+
+	}
+
+	if (offset==0){
 
 		getResultSetSize();
+		//$('#status').text('Karten (' + parseInt(minVal)+'-'+parseInt(maxVal)+'): ' + loadedMaps + ' von ' + 85000);
+		//$("#status").append(' <a onclick="executeQuery('+$("li").size()+')" href="#">[weiter]</a>');
+		totalMaps = "[laden...]";
 
 	};
 
@@ -132,8 +142,8 @@ function executeQuery(offset) {
 
 						.optional().where("?map","maps:mapSize","?size").end()
 					.optional().where("?map","dct:description","?description").end()
-			  	.end()
-			  		.orderby("?year").distinct()
+			  	.end()//.distinct()
+			  		//.orderby("?year").distinct()
 
 			  .limit(queryLimit)
 			  .offset(queryOffset);
@@ -184,7 +194,7 @@ function getQueryVariable(variable) {
       return pair[1];
     }
   }
-  alert('Query Variable ' + variable + ' not found');
+  alert('Query variable for Named Graph ' + variable + ' not found');
 }
 
 
@@ -266,7 +276,7 @@ function myCallback(str) {
 
 	console.log(jsonObj);
 
-	if (queryOffset == 0){
+	if (queryOffset == 0 || queryOffset == null){
 
 		$("#result").html("");
 		$("#result").append('<ul id="itemsContainer" style="list-style-type:none"></ul>');

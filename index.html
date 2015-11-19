@@ -247,7 +247,18 @@ $('#bbox').on('click', function(){
 $( document ).ready(function() {
 
 
-	setTemporalLimit();
+  if(getQueryVariable("source")=='goettingen'){
+      showSpin();
+      setSliderRange(1901, 2015, 1901, 2015);
+      minVal = 1901;
+      maxVal = 2015;
+      executeQuery();
+  } else {
+      setTemporalLimit();
+  }
+	//setTemporalLimit();
+  //minVal = parseInt(jsonObj.results.bindings[i].mindate.value);
+  //maxVal = parseInt(jsonObj.results.bindings[i].maxdate.value);
 
 	//** Loading RDF properties from file. (Done with a local file to avoid CORS issues)
 	$.get("rdf/historicmapsphen.rdf", function(xmlResponse){
