@@ -1,2 +1,2 @@
 var queryOffset =0;
-var queryLimit =25;
+var queryLimit =100;

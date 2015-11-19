@@ -108,15 +108,18 @@ function executeQuery(offset) {
 
 	if (offset==null){
 
-		totalMaps = 85000;
+		if(getQueryVariable("source")=="goettingen"){
+				totalMaps = 85000;
+		} else {
+				getResultSetSize();
+		}
+
 
 	}
 
 	if (offset==0){
 
 		getResultSetSize();
-		//$('#status').text('Karten (' + parseInt(minVal)+'-'+parseInt(maxVal)+'): ' + loadedMaps + ' von ' + 85000);
-		//$("#status").append(' <a onclick="executeQuery('+$("li").size()+')" href="#">[weiter]</a>');
 		totalMaps = "[laden...]";
 
 	};
